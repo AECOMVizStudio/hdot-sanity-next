@@ -1,21 +1,20 @@
-import { off, title } from "process";
-
 const project = {
   name: "project",
   title: "Projects",
   type: "document",
   fields: [
     {
-      name: "title",
-      title: "Title",
+      name: "name",
+      title: "Name",
       type: "string",
+      validation: (Rule) => Rule.required().error("Name is required"),
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
       options: {
-        source: "title",
+        source: "name",
         maxLength: 96,
       },
     },
