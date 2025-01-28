@@ -2,12 +2,13 @@ const project = {
   name: "project",
   title: "Projects",
   type: "document",
+
   fields: [
     {
       name: "name",
       title: "Name",
       type: "string",
-      validation: (Rule) => Rule.required().error("Name is required"),
+      validation: (Rule: any) => Rule.required().error("Name is required"),
     },
     {
       name: "slug",
