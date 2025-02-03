@@ -29,24 +29,36 @@ export async function getProjects(): Promise<Project[]> {
   }
 }
 
-export async function getHomePage(): Promise<HomePage[]> {
+export async function getHomePage(): Promise<HomePage> {
   try {
     const homePage = await client.fetch(
-      groq`*[_type == "homePage"]{
+      groq`*[_type == "homePage"][0]{
         _id,
         _createdAt,
         title,
-          photoGallery[]{
+        photoGallery[]{
           asset->{
             _id,
             url
           }
         },
-        projectOverview,
-        projectUpdates,
-        leaveComment
+        sections[]{
+          title,
+          content,
+          image{
+            asset->{
+              _id,
+              url
+            }
+          },
+          altText,
+          imageIsOnRight,
+          buttonText,
+          buttonLink
+        }
       }`
     );
+
     return homePage;
   } catch (error) {
     console.error("Failed to fetch homePage:", error);
