@@ -1,5 +1,4 @@
-// n https://www.youtube.com/watch?v=OcTPaUfay5I
-import { getProjects } from "@/sanity/sanity-utils";
+import { getHomePage } from "@/sanity/sanity-utils";
 import { PortableText } from "next-sanity";
 
 import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
@@ -7,25 +6,36 @@ import Section from "@/components/Section/Section";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
 
+import { HomePage } from "@/types/HomePage";
+
 export default async function Home() {
-  const projects = await getProjects(); // projects fetched as Promise, type checked in sanity-utils.ts
-  // console.log("Fetched projects:", projects);  Debugging statement
+  const homePage: HomePage = await getHomePage();
+  console.log("Fetched home page data:", homePage); // Debugging statement
 
   return (
     <>
-      <PhotoGallery />
-      <Section title="Project Overview">
-        <p>Project overview text goes here...</p>
-      </Section>
-      <Section title="Project Updates & Events">
-        <p>Project updates and events text goes here...</p>
-      </Section>
-      <Section title="Leave a Comment">
-        <p>If you have any comments, please leave them below:</p>
-        <Link href="/submit-comments">
-          <Button>Leave a Comment</Button>
-        </Link>
-      </Section>
+      {/* <PhotoGallery images={homePage.photoGallery} /> */}
+
+      <h1 className="text-4xl flex items-center w-full justify-center">
+        {homePage.title}
+      </h1>
+
+      {homePage.sections.map((section, index) => (
+        <Section
+          key={index}
+          title={section.title}
+          imageIsOnRight={section.imageIsOnRight}
+          imageSrc={section.image.asset.url}
+          altText={section.altText}
+        >
+          <PortableText value={section.content} />
+          {section.buttonText && section.buttonLink && (
+            <Link href={section.buttonLink} className="inline-block mt-4">
+              <Button>{section.buttonText}</Button>
+            </Link>
+          )}
+        </Section>
+      ))}
     </>
   );
 }
