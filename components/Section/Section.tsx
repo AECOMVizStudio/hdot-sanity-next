@@ -4,8 +4,8 @@ interface SectionProps {
   title: string;
   imageIsOnRight: boolean;
   children: ReactNode;
-  imageSrc: string; // Adding an image source prop
-  altText: string; // Accessibility improvement
+  imageSrc: string;
+  altText: string;
 }
 
 const Section = ({

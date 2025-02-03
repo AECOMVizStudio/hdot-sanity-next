@@ -16,6 +16,10 @@ export default async function Home() {
     <>
       {/* <PhotoGallery images={homePage.photoGallery} /> */}
 
+      <h1 className="text-4xl flex items-center w-full justify-center">
+        {homePage.title}
+      </h1>
+
       {homePage.sections.map((section, index) => (
         <Section
           key={index}
