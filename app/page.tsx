@@ -1,7 +1,6 @@
 import { getHomePage } from "@/sanity/sanity-utils";
 import { PortableText } from "next-sanity";
 
-import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
 import Section from "@/components/Section/Section";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
@@ -14,8 +13,6 @@ export default async function Home() {
 
   return (
     <>
-      {/* <PhotoGallery images={homePage.photoGallery} /> */}
-
       <h1 className="text-4xl flex items-center w-full justify-center">
         {homePage.title}
       </h1>
