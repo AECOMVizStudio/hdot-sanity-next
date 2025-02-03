@@ -10,14 +10,11 @@ export type CommentsPage = {
       _id: string;
       url: string;
     };
+    alt: string;
   };
+
   formSubtitle: string;
-  formImage: {
-    asset: {
-      _id: string;
-      url: string;
-    };
-  };
+
   formFields: {
     name: string;
     email: string;

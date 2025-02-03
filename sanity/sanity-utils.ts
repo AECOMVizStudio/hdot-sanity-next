@@ -80,16 +80,11 @@ export async function getCommentsPage(): Promise<CommentsPage> {
         mainImage{
           asset->{
             _id,
-            url
-          }
+            url,
+          },
+          alt
         },
         formSubtitle,
-        formImage{
-          asset->{
-            _id,
-            url
-          }
-        },
         formFields{
           name,
           email,

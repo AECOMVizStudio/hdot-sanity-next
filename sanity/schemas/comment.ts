@@ -20,10 +20,18 @@ export default {
       name: "mainImage",
       title: "Main Image",
       type: "image",
-      options: {
-        hotspot: true, // Allows for image cropping in the studio
-      },
+      fields: [
+        {
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+          description: "Describe the image for accessibility and SEO.",
+          validation: (Rule: any) =>
+            Rule.required().error("Alt text is required"),
+        },
+      ],
     },
+
     {
       name: "formSubtitle",
       title: "Form Subtitle",
