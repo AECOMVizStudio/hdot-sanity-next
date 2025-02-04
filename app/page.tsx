@@ -9,7 +9,7 @@ import { HomePage } from "@/types/HomePage";
 
 export default async function Home() {
   const homePage: HomePage = await getHomePage();
-  console.log("Fetched home page data:", homePage); // Debugging statement
+  // console.log("Fetched home page data:", homePage); Debugging statement
 
   return (
     <>
