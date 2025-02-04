@@ -9,13 +9,20 @@ import { HomePage } from "@/types/HomePage";
 
 export default async function Home() {
   const homePage: HomePage = await getHomePage();
-  // console.log("Fetched home page data:", homePage); Debugging statement
+  console.log("Fetched home page data:", homePage); // Debugging statement
 
   return (
     <>
-      <h1 className="text-4xl flex items-center w-full justify-center">
-        {homePage.title}
-      </h1>
+      <div className="flex items-center w-full justify-center flex-col ">
+        <h1 className="text-4xl ">{homePage.title}</h1>
+        <h2 className="text-2xl text-center mt-4">{homePage.subtitle}</h2>
+
+        <a href={homePage.headerButtonLink} className="inline-block mt-4">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
+            {homePage.headerButtonText}
+          </button>
+        </a>
+      </div>
 
       {homePage.sections.map((section, index) => (
         <Section
