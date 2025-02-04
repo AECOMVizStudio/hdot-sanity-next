@@ -37,6 +37,9 @@ export async function getHomePage(): Promise<HomePage> {
         _id,
         _createdAt,
         title,
+        subtitle,
+        headerButtonText,
+        headerButtonLink,
         photoGallery[]{
           asset->{
             _id,

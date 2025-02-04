@@ -4,6 +4,9 @@ export type HomePage = {
   _id: string;
   _createdAt: Date;
   title: string;
+  subtitle: string;
+  headerButtonText: string;
+  headerButtonLink: string;
   photoGallery: {
     asset: {
       _id: string;
