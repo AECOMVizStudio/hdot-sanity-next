@@ -34,15 +34,12 @@ export async function getHomePage(): Promise<HomePage> {
   try {
     const homePage = await client.fetch(
       groq`*[_type == "homePage"][0]{
-        _id,
-        _createdAt,
         title,
         subtitle,
         headerButtonText,
         headerButtonLink,
-        photoGallery[]{
+        photoGallery[] {
           asset->{
-            _id,
             url
           }
         },
@@ -51,7 +48,6 @@ export async function getHomePage(): Promise<HomePage> {
           content,
           image{
             asset->{
-              _id,
               url
             }
           },
@@ -62,7 +58,6 @@ export async function getHomePage(): Promise<HomePage> {
         }
       }`
     );
-
     return homePage;
   } catch (error) {
     console.error("Failed to fetch homePage:", error);
