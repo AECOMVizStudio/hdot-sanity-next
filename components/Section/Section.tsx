@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import Image from "next/image";
 
 interface SectionProps {
   title: string;
@@ -30,10 +31,12 @@ const Section = ({
 
         {/* Image Section */}
         <div className="w-full md:w-1/2 p-4 flex justify-center">
-          <img
+          <Image
             src={imageSrc}
             alt={altText}
-            className="w-full h-auto max-h-96 object-cover rounded-lg shadow-md"
+            width={500} // Adjust width as needed
+            height={300} // Adjust height as needed
+            className="rounded-lg"
           />
         </div>
       </div>
