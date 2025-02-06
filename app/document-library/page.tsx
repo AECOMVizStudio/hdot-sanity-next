@@ -21,7 +21,7 @@ const DocumentLibrary = async () => {
             <h2 className="text-xl font-semibold mb-4">{section.title}</h2>
 
             <ul className="space-y-2">
-              {section.documentLibrary.map((doc, index) => (
+              {section.documentLibrary.map((doc) => (
                 <li key={doc._key}>
                   {doc.fileUrl ? (
                     <a
