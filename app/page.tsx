@@ -4,13 +4,11 @@ import { PortableText } from "next-sanity";
 
 import Section from "@/components/Section/Section";
 import Button from "@/components/Button/Button";
-import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
 
 import { HomePage } from "@/types/HomePage";
 
 export default async function Home() {
   const homePage: HomePage = await getHomePage();
-  //console.log("Fetched home page data:", homePage); // Debugging statement
 
   return (
     <>
