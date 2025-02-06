@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="relative w-full flex items-center justify-center flex-col text-white py-20">
+      <div className="relative w-full flex items-center justify-center flex-col text-white py-28">
         {/* Background Image */}
         <div
           className="absolute inset-0"
