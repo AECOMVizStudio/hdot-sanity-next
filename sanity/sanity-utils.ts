@@ -1,6 +1,7 @@
 import { createClient, groq } from "next-sanity";
 import { Project } from "@/types/Project";
 import { HomePage } from "@/types/HomePage";
+import { CommentsPage } from "@/types/CommentsPage";
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -33,12 +34,12 @@ export async function getHomePage(): Promise<HomePage> {
   try {
     const homePage = await client.fetch(
       groq`*[_type == "homePage"][0]{
-        _id,
-        _createdAt,
         title,
-        photoGallery[]{
+        subtitle,
+        headerButtonText,
+        headerButtonLink,
+        photoGallery[] {
           asset->{
-            _id,
             url
           }
         },
@@ -47,7 +48,6 @@ export async function getHomePage(): Promise<HomePage> {
           content,
           image{
             asset->{
-              _id,
               url
             }
           },
@@ -58,10 +58,42 @@ export async function getHomePage(): Promise<HomePage> {
         }
       }`
     );
-
     return homePage;
   } catch (error) {
     console.error("Failed to fetch homePage:", error);
     throw new Error("Failed to fetch homePage");
+  }
+}
+
+// sanity-utils.ts
+
+export async function getCommentsPage(): Promise<CommentsPage> {
+  try {
+    const commentsPage = await client.fetch(
+      groq`*[_type == "commentsPage"][0]{
+        _id,
+        _createdAt,
+        title,
+        description,
+        mainImage{
+          asset->{
+            _id,
+            url,
+          },
+          alt
+        },
+        formSubtitle,
+        formFields{
+          name,
+          email,
+          subject,
+          message
+        }
+      }`
+    );
+    return commentsPage;
+  } catch (error) {
+    console.error("Failed to fetch commentsPage:", error);
+    throw new Error("Failed to fetch commentsPage");
   }
 }

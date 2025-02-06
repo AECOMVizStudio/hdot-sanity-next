@@ -7,7 +7,30 @@ const homePage = {
       name: "title",
       title: "Title",
       type: "string",
+      description: "Page title displayed top center of Home page",
       validation: (Rule: any) => Rule.required().error("Title is required"),
+    },
+    {
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
+    },
+    {
+      name: "headerButtonText",
+      title: "Header Button Text",
+      type: "string",
+      description: "Text displayed on the button.",
+    },
+    {
+      name: "headerButtonLink",
+      title: "Header Button Link",
+      type: "url",
+      description: "Site page the button will link to.",
+      validation: (Rule: any) =>
+        Rule.uri({
+          allowRelative: true,
+          scheme: ["http", "https", "mailto", "tel"],
+        }).error("Only relative URLs are allowed"),
     },
     {
       name: "photoGallery",
@@ -73,8 +96,9 @@ const homePage = {
               description: "URL the button will link to.",
               validation: (Rule: any) =>
                 Rule.uri({
+                  allowRelative: true,
                   scheme: ["http", "https", "mailto", "tel"],
-                }),
+                }).error("Only relative URLs are allowed"),
             },
           ],
         },

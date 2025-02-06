@@ -1,12 +1,9 @@
 import React from "react";
-import Section from "@/components/Section/Section";
 
 const FAQ = () => {
   return (
     <>
-      <Section title="FAQ">
-        <p>FAQ text goes here...</p>
-      </Section>
+      <h1>FAQ Text goes Here</h1>
     </>
   );
 };

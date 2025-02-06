@@ -1,12 +1,23 @@
-const PhotoGallery = () => {
+import Image from "next/image";
+
+interface PhotoGalleryProps {
+  images: { asset: { url: string } }[];
+}
+
+const PhotoGallery = ({ images }: PhotoGalleryProps) => {
+  if (!images || images.length === 0) return null;
   return (
-    <div>
-      <h2>Photo Gallery</h2>
-      <div className="photo-gallery">
-        <img src="/images/placeholder1.jpg" alt="Placeholder 1" />
-        <img src="/images/placeholder2.jpg" alt="Placeholder 2" />
-        <img src="/images/placeholder3.jpg" alt="Placeholder 3" />
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+      {images.map((image, index) => (
+        <div key={index} className="relative w-full h-64">
+          <Image
+            src={image.asset.url}
+            alt={`Gallery Image ${index + 1}`}
+            fill
+            className="object-cover rounded-lg shadow-md"
+          />
+        </div>
+      ))}
     </div>
   );
 };

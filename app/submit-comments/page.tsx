@@ -1,14 +1,95 @@
-import React from "react";
-import Section from "@/components/Section/Section";
+import { getCommentsPage } from "@/sanity/sanity-utils";
+import Image from "next/image";
 
-const SubmitComments = () => {
+async function SubmitComments() {
+  const commentsPage = await getCommentsPage();
+
+  const formFields = commentsPage.formFields || {};
+
   return (
-    <>
-      <Section title="Submit Comments">
-        <p>Submit comments text goes here...</p>
-      </Section>
-    </>
+    <div className="container mx-auto px-4 py-8">
+      {/* Title and Description */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-semibold">{commentsPage.title}</h1>
+        <p className="text-lg text-gray-700">{commentsPage.description}</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Comment Form */}
+        <div className="flex flex-col space-y-4">
+          <h2 className="text-2xl font-semibold">
+            {commentsPage.formSubtitle}
+          </h2>
+          <form className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block">
+                {formFields.name || "Name"}
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full p-2 border border-gray-300 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block">
+                {formFields.email || "Email"}
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full p-2 border border-gray-300 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="subject" className="block">
+                {formFields.subject || "Subject"}
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                className="w-full p-2 border border-gray-300 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block">
+                {formFields.message || "Message"}
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                className="w-full p-2 border border-gray-300 rounded"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white p-2 rounded"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+
+        <div className="flex items-center justify-center">
+          <Image
+            src={commentsPage.mainImage.asset.url}
+            alt={commentsPage.mainImage.alt || "Default alt text"}
+            priority
+            width={400}
+            height={200}
+            className="object-cover"
+          />
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
 export default SubmitComments;
