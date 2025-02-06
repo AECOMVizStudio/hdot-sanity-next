@@ -4,7 +4,7 @@ import { DocumentsPage } from "@/types/DocumentsPage";
 const DocumentLibrary = async () => {
   const documentsPage: DocumentsPage = await getDocumentsPage();
 
-  console.log(documentsPage.subSections[0]);
+  console.log(documentsPage);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -23,14 +23,29 @@ const DocumentLibrary = async () => {
             <ul className="space-y-2">
               {section.documentLibrary.map((doc, index) => (
                 <li key={doc._key}>
-                  <a
-                    href={doc.fileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline flex items-center"
-                  >
-                    📄 {doc.title}
-                  </a>
+                  {doc.fileUrl ? (
+                    <a
+                      href={doc.fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline flex items-center"
+                    >
+                      📄 {doc.title}
+                    </a>
+                  ) : doc.externalLink ? (
+                    <a
+                      href={doc.externalLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-600 hover:underline flex items-center"
+                    >
+                      🔗 {doc.title}
+                    </a>
+                  ) : (
+                    <span className="text-gray-500">
+                      {doc.title} (No file or link)
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

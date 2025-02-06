@@ -107,6 +107,7 @@ export async function getDocumentsPage(): Promise<DocumentsPage> {
           _key,  // Unique key for each document item
           title,
           "fileUrl": file.asset->url,
+          externalLink,
           description
         }
       }

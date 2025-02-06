@@ -1,7 +1,8 @@
 export type DocumentFile = {
   _key: string;
   title: string;
-  fileUrl: string;
+  fileUrl?: string; // Optional since it may be an external link instead
+  externalLink?: string;
   description?: string;
 };
 

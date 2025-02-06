@@ -48,9 +48,15 @@ const documentsPage = {
                       name: "file",
                       title: "PDF File",
                       type: "file",
+                      description:
+                        "Upload a PDF file, or provide an external link below.",
                       options: { accept: ".pdf" },
-                      validation: (Rule: any) =>
-                        Rule.required().error("A PDF file is required"),
+                    },
+                    {
+                      name: "externalLink",
+                      title: "External Link",
+                      type: "url",
+                      description: "Optional external link instead of a PDF.",
                     },
                     {
                       name: "description",
@@ -59,7 +65,6 @@ const documentsPage = {
                       description: "Short summary of the document (optional).",
                     },
                   ],
-                  // Enables automatic unique key assignment for list rendering
                   preview: {
                     select: {
                       title: "title",
