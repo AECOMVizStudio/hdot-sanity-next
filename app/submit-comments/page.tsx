@@ -6,10 +6,6 @@ async function SubmitComments() {
 
   const formFields = commentsPage.formFields || {};
 
-  if (!commentsPage.mainImage.alt) {
-    console.error(commentsPage.mainImage);
-  }
-
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Title and Description */}
@@ -18,7 +14,6 @@ async function SubmitComments() {
         <p className="text-lg text-gray-700">{commentsPage.description}</p>
       </div>
 
-      {/* Two-column layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Comment Form */}
         <div className="flex flex-col space-y-4">
@@ -82,14 +77,13 @@ async function SubmitComments() {
           </form>
         </div>
 
-        {/* Image */}
         <div className="flex items-center justify-center">
           <Image
             src={commentsPage.mainImage.asset.url}
             alt={commentsPage.mainImage.alt || "Default alt text"}
             priority
-            width={800}
-            height={400}
+            width={400}
+            height={200}
             className="object-cover"
           />
         </div>
