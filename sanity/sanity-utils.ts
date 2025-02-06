@@ -101,9 +101,10 @@ export async function getDocumentsPage(): Promise<DocumentsPage> {
   const query = `
     *[_type == "documentsPage"][0] {
       title,
-      subSections[]{
+      subSections[] {
         title,
-        documents[]{
+        documentLibrary[] {
+          _key,  // Unique key for each document item
           title,
           "fileUrl": file.asset->url,
           description

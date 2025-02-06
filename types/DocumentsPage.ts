@@ -1,4 +1,5 @@
 export type DocumentFile = {
+  _key: string;
   title: string;
   fileUrl: string;
   description?: string;
@@ -6,7 +7,7 @@ export type DocumentFile = {
 
 export type SubSection = {
   title: string;
-  documents: DocumentFile[];
+  documentLibrary: DocumentFile[];
 };
 
 export type DocumentsPage = {

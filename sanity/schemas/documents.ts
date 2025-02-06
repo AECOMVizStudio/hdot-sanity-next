@@ -28,14 +28,14 @@ const documentsPage = {
                 Rule.required().error("Sub-section title is required"),
             },
             {
-              name: "documents",
+              name: "documentLibrary",
               title: "Documents",
               type: "array",
               of: [
                 {
                   type: "object",
-                  name: "document",
-                  title: "Document",
+                  name: "document-item",
+                  title: "Document-item",
                   fields: [
                     {
                       name: "title",
@@ -59,6 +59,12 @@ const documentsPage = {
                       description: "Short summary of the document (optional).",
                     },
                   ],
+                  // Enables automatic unique key assignment for list rendering
+                  preview: {
+                    select: {
+                      title: "title",
+                    },
+                  },
                 },
               ],
             },
