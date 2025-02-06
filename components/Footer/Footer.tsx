@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between items-center mt-4">
         <div className="mb-4 md:mb-0">
           <Image
-            src="https://via.placeholder.com/150" // Placeholder logo image
+            src="/hdot.svg"
             alt="Logo"
             width={40} // Adjust width as needed
             height={40} // Adjust height as needed
