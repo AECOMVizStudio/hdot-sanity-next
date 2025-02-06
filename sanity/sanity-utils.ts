@@ -2,6 +2,7 @@ import { createClient, groq } from "next-sanity";
 import { Project } from "@/types/Project";
 import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
+import { DocumentsPage } from "@/types/DocumentsPage";
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -65,8 +66,6 @@ export async function getHomePage(): Promise<HomePage> {
   }
 }
 
-// sanity-utils.ts
-
 export async function getCommentsPage(): Promise<CommentsPage> {
   try {
     const commentsPage = await client.fetch(
@@ -96,4 +95,25 @@ export async function getCommentsPage(): Promise<CommentsPage> {
     console.error("Failed to fetch commentsPage:", error);
     throw new Error("Failed to fetch commentsPage");
   }
+}
+
+export async function getDocumentsPage(): Promise<DocumentsPage> {
+  const query = `
+    *[_type == "documentsPage"][0] {
+      title,
+      subSections[] {
+        title,
+        documentLibrary[] {
+          _key,  // Unique key for each document item
+          title,
+          "fileUrl": file.asset->url,
+          externalLink,
+          description
+        }
+      }
+    }
+  `;
+
+  const documentsPage = await client.fetch(query);
+  return documentsPage;
 }
