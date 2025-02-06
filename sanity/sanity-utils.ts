@@ -59,7 +59,7 @@ export async function getHomePage(): Promise<HomePage> {
         }
       }`
     );
-    return homePage;
+    return client.fetch(homePage, {}, { next: { revalidate: 60 } }); // Refreshes every 60 sec
   } catch (error) {
     console.error("Failed to fetch homePage:", error);
     throw new Error("Failed to fetch homePage");
