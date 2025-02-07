@@ -73,21 +73,26 @@ NEXT_PUBLIC_SANITY_API_VERSION=2021-03-25
 ### Project Structure as of 2025-02-07
 
 hawaii-next/
+├── app/ # React components
+│ ├── admin/ # Route to Sanity Studio
+│ ├── document-library/
+│ ├── faq/
+│ ├── project-information/
+│ ├── submit-comments/
+│── page.tsx # Main page component
+│── layout.tsx # Main layout component
+│── globals.css
 ├── components/ # React components
 │ ├── Footer/ # Footer component
 │ ├── Header/ # Header component
 │ ├── Section/ # Section component
 │ └── ... # Other components
-├── pages/ # Next.js pages
-│ ├── api/ # API routes
-│ ├── document-library/ # Document library page
-│ ├── submit-comments/ # Submit comments page
-│ └── ... # Other pages
 ├── public/ # Static assets
 ├── sanity/ # Sanity schemas and configuration
-├── styles/ # Global styles
+├── types/ # TypeScript types
 ├── utils/ # Utility functions
 ├── .env # Environment variables
 ├── next.config.js # Next.js configuration
+├── tailwind.config.js # Tailwind configuration
 ├── package.json # Project dependencies and scripts
 └── README.md # Project documentation
