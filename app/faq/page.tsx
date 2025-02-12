@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { getFAQ } from "@/sanity/sanity-utils";
-import { PortableText } from "next-sanity";
+import { PortableText } from "@portabletext/react";
 import { FAQ } from "@/types/FAQPage";
 
 const FAQPage = () => {
@@ -28,7 +28,24 @@ const FAQPage = () => {
         {faq.questions.map((q, index) => (
           <div key={index} className="bg-gray-100 p-4 rounded-lg">
             <h2 className="text-xl font-semibold mb-2">{q.question}</h2>
-            <PortableText value={q.answer} />
+            <PortableText
+              value={q.answer}
+              components={{
+                marks: {
+                  link: ({ children, value }) => {
+                    const { href } = value;
+                    return (
+                      <a
+                        href={href}
+                        className="underline text-blue-600 hover:text-blue-800"
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                },
+              }}
+            />
           </div>
         ))}
       </div>

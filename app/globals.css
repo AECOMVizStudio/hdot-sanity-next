@@ -19,3 +19,7 @@
 body {
   font-family: "Aptos", sans-serif;
 }
+
+.portable-text a {
+  text-decoration: underline;
+}
