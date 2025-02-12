@@ -3,6 +3,7 @@ import { Project } from "@/types/Project";
 import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
 import { DocumentsPage } from "@/types/DocumentsPage";
+import { ProjectInfo } from "@/types/ProjectInfoPage";
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -117,4 +118,35 @@ export async function getDocumentsPage(): Promise<DocumentsPage> {
 
   const documentsPage = await client.fetch(query);
   return documentsPage;
+}
+
+export async function getProjectInfo(): Promise<ProjectInfo> {
+  return await client.fetch(
+    groq`*[_type == "projectInfo"][0]{
+      pageTitle,
+      projectBackgroundText,
+      projectBackgroundImage{
+        asset->{
+          url
+        },
+        altText
+      },
+      projectPurposeNeedText,
+      projectPurposeNeedImage{
+        asset->{
+          url
+        },
+        altText
+      },
+      projectTimelineText,
+      projectTimelineImage{
+        asset->{
+          url
+        },
+        altText
+      },
+      buttonText,
+      buttonLink
+    }`
+  );
 }
