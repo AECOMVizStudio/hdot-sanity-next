@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        hdotGray: "#5c5c5c",
+        hdotTeal: "#22767c",
+        hdotAqua: "#6fcddb",
+        hdotYellow: "#ffbe20",
       },
     },
   },

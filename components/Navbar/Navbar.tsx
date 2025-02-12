@@ -4,7 +4,7 @@ import Logo from "@/components/Logo/Logo";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-700 text-white p-4 flex items-center justify-between">
+    <nav className="bg-hdotGray text-white p-4 flex items-center justify-between">
       <Logo />
       <ul className="flex space-x-4">
         <li>
@@ -20,7 +20,7 @@ const Navbar = () => {
           <Link href="/faq">FAQ</Link>
         </li>
         <li>
-          <Link href="/submit-comments">Submit Comments</Link>
+          <Link href="/submit-comments">Contact Us</Link>
         </li>
       </ul>
     </nav>
