@@ -17,21 +17,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: "/(.*)", // Apply to all routes
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-store, max-age=0, must-revalidate",
-          },
-          { key: "Pragma", value: "no-cache" },
-          { key: "Expires", value: "0" },
-        ],
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/(.*)", // Apply to all routes
+  //       headers: [
+  //         {
+  //           key: "Cache-Control",
+  //           value: "no-store, max-age=0, must-revalidate",
+  //         },
+  //         { key: "Pragma", value: "no-cache" },
+  //         { key: "Expires", value: "0" },
+  //       ],
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;
