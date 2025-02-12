@@ -4,6 +4,7 @@ import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
 import { DocumentsPage } from "@/types/DocumentsPage";
 import { ProjectInfo } from "@/types/ProjectInfoPage";
+import { FAQ } from "@/types/FAQPage";
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -147,6 +148,18 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
       },
       buttonText,
       buttonLink
+    }`
+  );
+}
+
+export async function getFAQ(): Promise<FAQ> {
+  return await client.fetch(
+    groq`*[_type == "faq"][0]{
+      title,
+      questions[]{
+        question,
+        answer
+      }
     }`
   );
 }
