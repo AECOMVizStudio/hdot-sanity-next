@@ -15,6 +15,7 @@ export default {
         hdotTeal: "#22767c",
         hdotAqua: "#6fcddb",
         hdotYellow: "#ffbe20",
+        hdotSand: "#d0c4ac",
       },
     },
   },
