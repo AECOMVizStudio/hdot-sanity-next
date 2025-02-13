@@ -53,7 +53,7 @@ const ProjectInformation = () => {
       {currentSection === "background" && (
         <section className="mb-8 bg-hdotSand rounded-lg p-6">
           <div className="flex flex-col items-center">
-            <h2 className="text-2xl font-semibold mb-4 text-center">
+            <h2 className="text-hdotTeal text-2xl font-bold mb-4 text-center">
               Project Background
             </h2>
             <PortableText value={projectInfo.projectBackgroundText} />
@@ -75,7 +75,7 @@ const ProjectInformation = () => {
       {currentSection === "purpose" && (
         <section className="mb-8 bg-hdotSand rounded-lg p-6">
           <div className="flex flex-col items-center">
-            <h2 className="text-2xl font-semibold mb-4 text-center">
+            <h2 className="text-hdotTeal text-2xl font-bold mb-4 text-center">
               Project Purpose/Need
             </h2>
             <PortableText value={projectInfo.projectPurposeNeedText} />
@@ -97,7 +97,7 @@ const ProjectInformation = () => {
       {currentSection === "timeline" && (
         <section className="mb-8 bg-hdotSand rounded-lg p-6">
           <div className="flex flex-col items-center">
-            <h2 className="text-2xl font-semibold mb-4 text-center">
+            <h2 className="text-hdotTeal text-2xl font-bold mb-4 text-center">
               Project Timeline
             </h2>
             <PortableText value={projectInfo.projectTimelineText} />

@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="relative w-full flex items-center justify-center flex-col text-white py-28">
+      <div className="z-10 relative w-full flex items-center justify-center flex-col text-white py-28">
         {/* To do: make it display random background image from photGallery*/}
         <div
           className="absolute inset-0 w-full h-full"
