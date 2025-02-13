@@ -18,16 +18,20 @@ const FAQPage = () => {
   }, []);
 
   if (!faq) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-hdotGray">Loading...</div>;
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-6">{faq.title}</h1>
+    <div className="container mx-auto px-4 py-8 bg-hdotSand">
+      <h1 className="text-4xl font-bold text-center mb-8 text-hdotTeal">
+        {faq.title}
+      </h1>
       <div className="space-y-6">
         {faq.questions.map((q, index) => (
-          <div key={index} className="bg-gray-100 p-4 rounded-lg">
-            <h2 className="text-xl font-semibold mb-2">{q.question}</h2>
+          <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-2xl font-semibold mb-4 text-hdotGray">
+              {q.question}
+            </h2>
             <PortableText
               value={q.answer}
               components={{
@@ -37,7 +41,7 @@ const FAQPage = () => {
                     return (
                       <a
                         href={href}
-                        className="underline text-blue-600 hover:text-blue-800"
+                        className="underline text-hdotTeal hover:text-hdotAqua"
                       >
                         {children}
                       </a>

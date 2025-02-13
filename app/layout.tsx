@@ -5,7 +5,7 @@ import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata: Metadata = {
-  title: "Kamehameha",
+  title: "Kamehameha Highway Long-Range Coastal Resilience Plan",
   description: "For Hawaii DOT",
 };
 
@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased bg-gradient-to-b from-hdotSand to-hdotTeal min-h-screen">
         <Navbar />
-        <main className="py-20 px-16">{children}</main>
+        <main className="mx-auto rounded-lg shadow-lg">{children}</main>
         <Footer />
       </body>
     </html>
