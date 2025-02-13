@@ -31,19 +31,19 @@ const ProjectInformation = () => {
 
       <div className="flex justify-center mb-8">
         <button
-          className={`px-4 py-2 mx-2 rounded ${currentSection === "background" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+          className={`px-4 py-2 mx-2 rounded ${currentSection === "background" ? "btn" : "bg-gray-200"}`}
           onClick={() => setCurrentSection("background")}
         >
           Background
         </button>
         <button
-          className={`px-4 py-2 mx-2 rounded ${currentSection === "purpose" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+          className={`px-4 py-2 mx-2 rounded ${currentSection === "purpose" ? "btn" : "bg-gray-200"}`}
           onClick={() => setCurrentSection("purpose")}
         >
           Purpose
         </button>
         <button
-          className={`px-4 py-2 mx-2 rounded ${currentSection === "timeline" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+          className={`px-4 py-2 mx-2 rounded ${currentSection === "timeline" ? "btn" : "bg-gray-200"}`}
           onClick={() => setCurrentSection("timeline")}
         >
           Timeline

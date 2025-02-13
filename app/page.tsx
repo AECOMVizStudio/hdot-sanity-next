@@ -32,9 +32,7 @@ export default async function Home() {
           <h2 className="text-2xl text-center mt-4">{homePage.subtitle}</h2>
 
           <a href={homePage.headerButtonLink} className="inline-block mt-6">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg">
-              {homePage.headerButtonText}
-            </button>
+            <button className="btn">{homePage.headerButtonText}</button>
           </a>
         </div>
       </div>
