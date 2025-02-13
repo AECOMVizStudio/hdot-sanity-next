@@ -52,20 +52,18 @@ const ProjectInformation = () => {
 
       {currentSection === "background" && (
         <section className="mb-8 bg-hdotSand rounded-lg p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-center">
-                Project Background
-              </h2>
-              <PortableText value={projectInfo.projectBackgroundText} />
-            </div>
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-semibold mb-4 text-center">
+              Project Background
+            </h2>
+            <PortableText value={projectInfo.projectBackgroundText} />
             {projectInfo.projectBackgroundImage && (
-              <div className="flex justify-end">
+              <div className="mt-6">
                 <Image
                   src={projectInfo.projectBackgroundImage.asset.url}
                   alt={projectInfo.projectBackgroundImage.altText}
-                  width={400}
-                  height={250}
+                  width={800}
+                  height={350}
                   className="rounded-lg"
                 />
               </div>
@@ -76,15 +74,13 @@ const ProjectInformation = () => {
 
       {currentSection === "purpose" && (
         <section className="mb-8 bg-hdotSand rounded-lg p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-center">
-                Project Purpose/Need
-              </h2>
-              <PortableText value={projectInfo.projectPurposeNeedText} />
-            </div>
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-semibold mb-4 text-center">
+              Project Purpose/Need
+            </h2>
+            <PortableText value={projectInfo.projectPurposeNeedText} />
             {projectInfo.projectPurposeNeedImage && (
-              <div className="flex justify-end">
+              <div className="mt-6">
                 <Image
                   src={projectInfo.projectPurposeNeedImage.asset.url}
                   alt={projectInfo.projectPurposeNeedImage.altText}
@@ -100,15 +96,13 @@ const ProjectInformation = () => {
 
       {currentSection === "timeline" && (
         <section className="mb-8 bg-hdotSand rounded-lg p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-center">
-                Project Timeline
-              </h2>
-              <PortableText value={projectInfo.projectTimelineText} />
-            </div>
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-semibold mb-4 text-center">
+              Project Timeline
+            </h2>
+            <PortableText value={projectInfo.projectTimelineText} />
             {projectInfo.projectTimelineImage && (
-              <div className="flex justify-end">
+              <div className="mt-6">
                 <Image
                   src={projectInfo.projectTimelineImage.asset.url}
                   alt={projectInfo.projectTimelineImage.altText}
