@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { client } from "@/sanity/sanity-utils"; // Import the Sanity client
 import { z } from "zod"; // For validation
 
@@ -11,7 +11,7 @@ const CommentSchema = z.object({
   subscriber: z.boolean().optional(),
 });
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     // Parse the incoming JSON request body
     const body = await request.json();
@@ -20,8 +20,8 @@ export async function POST(request: Request) {
     const parsedData = CommentSchema.parse(body);
 
     // Save the comment to Sanity
-    await client.create({
-      _type: "comment", // Name of the schema
+    const newComment = await client.create({
+      _type: "comments", // Name of the schema
       name: parsedData.name,
       email: parsedData.email,
       subject: parsedData.subject || "", // Default to an empty string if not provided
