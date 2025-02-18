@@ -1,21 +1,68 @@
+"use client";
+import { useEffect, useState } from "react";
 import { getCommentsPage } from "@/sanity/sanity-utils";
 import Image from "next/image";
 
-async function SubmitComments() {
-  const commentsPage = await getCommentsPage();
+interface FormFields {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  subscriber: boolean;
+}
 
-  const formFields = commentsPage.formFields || {};
+function SubmitComments() {
+  const [commentsPage, setCommentsPage] = useState<any>(null);
 
+  useEffect(() => {
+    // Fetch the comments page data client-side when the component mounts
+    const fetchCommentsPage = async () => {
+      const data = await getCommentsPage();
+      setCommentsPage(data);
+    };
+
+    fetchCommentsPage();
+  }, []);
+
+  // skeleton loading state
   if (!commentsPage) {
     return (
-      <div className="animate-pulse">
-        <div className="h-6 bg-gray-300 rounded mb-4"></div>
-        <div className="h-6 bg-gray-300 rounded mb-4"></div>
-        <div className="h-6 bg-gray-300 rounded mb-4"></div>
-        <div className="h-6 bg-gray-300 rounded mb-4"></div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center mb-8">
+          <div className="h-8 bg-gray-300 rounded w-1/3 mx-auto mb-4"></div>
+          <div className="h-4 bg-gray-300 rounded w-2/3 mx-auto mb-4"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Skeleton for Comment Form */}
+          <div className="flex flex-col space-y-4">
+            <div className="h-6 bg-gray-300 rounded w-1/2 mb-4"></div>
+            <div className="space-y-4">
+              <div className="h-8 bg-gray-300 rounded"></div>
+              <div className="h-8 bg-gray-300 rounded"></div>
+              <div className="h-8 bg-gray-300 rounded"></div>
+              <div className="h-8 bg-gray-300 rounded"></div>
+              <div className="h-8 bg-gray-300 rounded"></div>
+            </div>
+            <div className="h-10 bg-gray-300 rounded w-1/4"></div>
+          </div>
+
+          {/* Skeleton for Image */}
+          <div className="flex items-center justify-center">
+            <div className="w-72 h-36 bg-gray-300 rounded"></div>
+          </div>
+        </div>
       </div>
     );
   }
+
+  const formFields: FormFields = commentsPage.formFields || {
+    name: "Name",
+    email: "Email",
+    subject: "Subject",
+    message: "Message",
+    subscriber: false,
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -79,12 +126,24 @@ async function SubmitComments() {
                 required
               />
             </div>
+            <div>
+              <label htmlFor="subscriber" className="block">
+                {formFields.subscriber || "Keep me updated on this project!"}
+              </label>
+              <input
+                type="checkbox"
+                id="subscriber"
+                name="subscriber"
+                className="w-4 h-4 border border-gray-300 rounded"
+              />
+            </div>
             <button type="submit" className="btn">
               Submit
             </button>
           </form>
         </div>
 
+        {/* Image */}
         <div className="flex items-center justify-center">
           <Image
             src={commentsPage.mainImage.asset.url}

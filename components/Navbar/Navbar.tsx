@@ -30,7 +30,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="/submit-comments" className="hover:text-hdotTeal">
-              Contact Us
+              Provide Feedback
             </Link>
           </li>
         </ul>

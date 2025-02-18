@@ -53,26 +53,29 @@ export async function getHomePage(): Promise<HomePage> {
 export async function getCommentsPage(): Promise<CommentsPage | null> {
   try {
     const commentsPage: CommentsPage | null = await client.fetch(
-      groq`*[_type == "commentsPage"][0]{
-        _id,
-        _createdAt,
-        title,
-        description,
-        mainImage{
-          asset->{
-            _id,
-            url,
+      groq`
+        *[_type == "commentsPage"][0]{
+          _id,
+          _createdAt,
+          title,
+          description,
+          mainImage{
+            asset->{
+              _id,
+              url
+            },
+            alt
           },
-          alt
-        },
-        formSubtitle,
-        formFields{
-          name,
-          email,
-          subject,
-          message
+          formSubtitle,
+          formFields{
+            name,
+            email,
+            subject,
+            message,
+            subscriber
+          }
         }
-      }`
+      `
     );
     return commentsPage;
   } catch (error) {
@@ -81,26 +84,26 @@ export async function getCommentsPage(): Promise<CommentsPage | null> {
   }
 }
 
-export async function createComment(
-  commentData: Omit<Comment, "_id" | "_createdAt"> // Only omit from input
-): Promise<Comment> {
-  try {
-    const comment = await client.create({
-      _type: "comment",
-      name: commentData.name,
-      email: commentData.email,
-      subject: commentData.subject || "",
-      message: commentData.message,
-      subscriber: commentData.subscriber,
-    });
+// export async function createComment(
+//   commentData: Omit<Comment, "_id" | "_createdAt"> // Only omit from input
+// ): Promise<Comment> {
+//   try {
+//     const comment = await client.create({
+//       _type: "comment",
+//       name: commentData.name,
+//       email: commentData.email,
+//       subject: commentData.subject || "",
+//       message: commentData.message,
+//       subscriber: commentData.subscriber,
+//     });
 
-    // Since Sanity includes the _id and _createdAt automatically, we don't need to omit them here
-    return comment as Comment; // Type assertion to ensure it matches the Comment type
-  } catch (error) {
-    console.error("Failed to create comment:", error);
-    throw new Error("Failed to create comment");
-  }
-}
+//     // Since Sanity includes the _id and _createdAt automatically, we don't need to omit them here
+//     return comment as Comment; // Type assertion to ensure it matches the Comment type
+//   } catch (error) {
+//     console.error("Failed to create comment:", error);
+//     throw new Error("Failed to create comment");
+//   }
+// }
 
 export async function getDocumentsPage(): Promise<DocumentsPage> {
   const query = `
