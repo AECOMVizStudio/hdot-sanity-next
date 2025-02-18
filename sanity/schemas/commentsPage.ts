@@ -1,5 +1,3 @@
-// schemas/commentsPage.js
-
 export default {
   name: "commentsPage",
   title: "Comments Page",
@@ -9,7 +7,6 @@ export default {
       name: "title",
       title: "Page Title",
       type: "string",
-      validation: (Rule: any) => Rule.required().error("Title is required"),
     },
     {
       name: "description",
@@ -17,27 +14,18 @@ export default {
       type: "text",
     },
     {
-      name: "mainImage",
-      title: "Main Image",
-      type: "image",
-      fields: [
-        {
-          name: "alt",
-          title: "Alternative Text",
-          type: "string",
-          description: "Describe the image for accessibility and SEO.",
-          validation: (Rule: any) =>
-            Rule.required().error("Alt text is required"),
-        },
-      ],
-    },
-
-    {
       name: "formSubtitle",
       title: "Form Subtitle",
       type: "string",
     },
-
+    {
+      name: "mainImage",
+      title: "Main Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
     {
       name: "formFields",
       title: "Form Fields",
@@ -45,23 +33,28 @@ export default {
       fields: [
         {
           name: "name",
-          title: "Name Field",
+          title: "Name Field Label",
           type: "string",
         },
         {
           name: "email",
-          title: "Email Field",
+          title: "Email Field Label",
           type: "string",
         },
         {
           name: "subject",
-          title: "Subject Field",
+          title: "Subject Field Label",
           type: "string",
         },
         {
           name: "message",
-          title: "Message Field",
-          type: "text",
+          title: "Message Field Label",
+          type: "string",
+        },
+        {
+          name: "subscriber",
+          title: "Subscriber Checkbox Label",
+          type: "string",
         },
       ],
     },

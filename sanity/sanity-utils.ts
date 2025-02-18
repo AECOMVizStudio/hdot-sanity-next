@@ -1,37 +1,17 @@
 import { createClient, groq } from "next-sanity";
-import { Project } from "@/types/Project";
 import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
 import { DocumentsPage } from "@/types/DocumentsPage";
 import { ProjectInfo } from "@/types/ProjectInfoPage";
 import { FAQ } from "@/types/FAQPage";
 
-const client = createClient({
+export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
+  token: process.env.SANITY_API_TOKEN,
   useCdn: false,
 });
-
-export async function getProjects(): Promise<Project[]> {
-  try {
-    const projects = await client.fetch(
-      groq`*[_type == "project"]{
-        _id,
-        _createdAt,
-        name,
-        "slug": slug.current,
-        "image": image.asset->url,
-        url,
-        content
-      }`
-    );
-    return projects;
-  } catch (error) {
-    console.error("Failed to fetch projects:", error);
-    throw new Error("Failed to fetch projects");
-  }
-}
 
 export async function getHomePage(): Promise<HomePage> {
   try {
@@ -69,29 +49,32 @@ export async function getHomePage(): Promise<HomePage> {
   }
 }
 
-export async function getCommentsPage(): Promise<CommentsPage> {
+export async function getCommentsPage(): Promise<CommentsPage | null> {
   try {
-    const commentsPage = await client.fetch(
-      groq`*[_type == "commentsPage"][0]{
-        _id,
-        _createdAt,
-        title,
-        description,
-        mainImage{
-          asset->{
-            _id,
-            url,
+    const commentsPage: CommentsPage | null = await client.fetch(
+      groq`
+        *[_type == "commentsPage"][0]{
+          _id,
+          _createdAt,
+          title,
+          description,
+          mainImage{
+            asset->{
+              _id,
+              url
+            },
+            alt
           },
-          alt
-        },
-        formSubtitle,
-        formFields{
-          name,
-          email,
-          subject,
-          message
+          formSubtitle,
+          formFields{
+            name,
+            email,
+            subject,
+            message,
+            subscriber
+          }
         }
-      }`
+      `
     );
     return commentsPage;
   } catch (error) {
