@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "comment",
-  title: "Comment",
+  title: "Comments (please ignore for now)",
   type: "document",
   fields: [
     defineField({
@@ -33,13 +33,6 @@ export default defineType({
       name: "subscriber",
       title: "Add to Email List",
       type: "boolean",
-    }),
-    defineField({
-      name: "post",
-      title: "Related Post",
-      type: "reference",
-      to: [{ type: "post" }],
-      validation: (Rule) => Rule.required().error("A related post is required"),
     }),
     defineField({
       name: "createdAt",

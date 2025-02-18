@@ -1,27 +1,31 @@
-import { NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
+import { createComment } from "@/sanity/sanity-utils"; // import the createComment function
+import { Comment } from "@/types/Comment"; // Import the Comment type
 
-export async function POST(req: Request) {
-  try {
-    const data = await req.json();
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === "POST") {
+    try {
+      const commentData: Comment = req.body;
 
-    const { name, email, subject, message, subscriber } = data;
+      // Simple validation (you can add more checks as needed)
+      if (!commentData.name || !commentData.email || !commentData.message) {
+        return res.status(400).json({ message: "Missing required fields" });
+      }
 
-    // validation
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Name, email, and message are required." },
-        { status: 400 }
-      );
+      // Call the createComment function to save the comment in Sanity
+      const newComment = await createComment(commentData);
+
+      // Respond with the created comment data
+      res.status(200).json(newComment);
+    } catch (error) {
+      console.error("Error creating comment:", error);
+      res.status(500).json({ message: "Error creating comment" });
     }
-
-    return NextResponse.json(
-      { message: "Comment submitted successfully!" },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { error: "An error occurred while submitting your comment." },
-      { status: 500 }
-    );
+  } else {
+    // Handle other HTTP methods if needed
+    res.status(405).json({ message: "Method not allowed" });
   }
 }

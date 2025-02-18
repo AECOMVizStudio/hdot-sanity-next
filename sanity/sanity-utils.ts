@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { Project } from "@/types/Project";
+import { Comment } from "@/types/Comment";
 import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
 import { DocumentsPage } from "@/types/DocumentsPage";
@@ -10,28 +10,9 @@ const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
+  token: process.env.SANITY_API_TOKEN,
   useCdn: false,
 });
-
-export async function getProjects(): Promise<Project[]> {
-  try {
-    const projects = await client.fetch(
-      groq`*[_type == "project"]{
-        _id,
-        _createdAt,
-        name,
-        "slug": slug.current,
-        "image": image.asset->url,
-        url,
-        content
-      }`
-    );
-    return projects;
-  } catch (error) {
-    console.error("Failed to fetch projects:", error);
-    throw new Error("Failed to fetch projects");
-  }
-}
 
 export async function getHomePage(): Promise<HomePage> {
   try {
@@ -69,9 +50,9 @@ export async function getHomePage(): Promise<HomePage> {
   }
 }
 
-export async function getCommentsPage(): Promise<CommentsPage> {
+export async function getCommentsPage(): Promise<CommentsPage | null> {
   try {
-    const commentsPage = await client.fetch(
+    const commentsPage: CommentsPage | null = await client.fetch(
       groq`*[_type == "commentsPage"][0]{
         _id,
         _createdAt,
@@ -97,6 +78,27 @@ export async function getCommentsPage(): Promise<CommentsPage> {
   } catch (error) {
     console.error("Failed to fetch commentsPage:", error);
     throw new Error("Failed to fetch commentsPage");
+  }
+}
+
+export async function createComment(
+  commentData: Omit<Comment, "_id" | "_createdAt"> // Only omit from input
+): Promise<Comment> {
+  try {
+    const comment = await client.create({
+      _type: "comment",
+      name: commentData.name,
+      email: commentData.email,
+      subject: commentData.subject || "",
+      message: commentData.message,
+      subscriber: commentData.subscriber,
+    });
+
+    // Since Sanity includes the _id and _createdAt automatically, we don't need to omit them here
+    return comment as Comment; // Type assertion to ensure it matches the Comment type
+  } catch (error) {
+    console.error("Failed to create comment:", error);
+    throw new Error("Failed to create comment");
   }
 }
 
