@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { getCommentsPage } from "@/sanity/sanity-utils";
 import Image from "next/image";
-import { form } from "sanity/structure";
 
 interface FormFields {
   name: string;
