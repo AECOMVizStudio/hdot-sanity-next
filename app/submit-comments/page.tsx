@@ -12,7 +12,20 @@ interface FormFields {
 }
 
 function SubmitComments() {
-  const [commentsPage, setCommentsPage] = useState<any>(null);
+  interface CommentsPage {
+    title: string;
+    description: string;
+    formSubtitle: string;
+    formFields: FormFields;
+    mainImage: {
+      asset: {
+        url: string;
+      };
+      alt: string;
+    };
+  }
+
+  const [commentsPage, setCommentsPage] = useState<CommentsPage | null>(null);
   const [formData, setFormData] = useState<FormFields>({
     name: "",
     email: "",
@@ -102,10 +115,6 @@ function SubmitComments() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error("Error submitting the form");
-      }
-
       // Reset form data after submission
       setFormData({
         name: "",
@@ -115,7 +124,7 @@ function SubmitComments() {
         subscriber: false,
       });
       alert("Thank you for your submission!");
-    } catch (error) {
+    } catch {
       alert("There was an error submitting your form.");
     } finally {
       setIsSubmitting(false);
