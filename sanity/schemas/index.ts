@@ -1,9 +1,18 @@
-import homePage from "./home-page-schema";
+import { SchemaTypeDefinition } from "sanity";
+import homePage from "./homePage";
+import commentsPage from "./commentsPage";
 import comment from "./comment";
 import documents from "./documents";
-import projectInfo from "./project-info";
+import projectInfo from "./projectInfo";
 import faq from "./faq";
 
-const schemas = [homePage, comment, documents, projectInfo, faq];
+const schemas: SchemaTypeDefinition[] = [
+  homePage,
+  commentsPage,
+  comment,
+  documents,
+  projectInfo,
+  faq,
+];
 
 export default schemas;

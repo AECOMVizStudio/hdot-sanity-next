@@ -1,10 +1,9 @@
-// types/HomePage.ts
-
 export type CommentsPage = {
   _id: string;
-  _createdAt: Date;
+  _type: "commentsPage";
+  _createdAt: string;
   title: string;
-  description: string;
+  description?: string;
   mainImage: {
     asset: {
       _id: string;
@@ -12,13 +11,6 @@ export type CommentsPage = {
     };
     alt: string;
   };
-
-  formSubtitle: string;
-
-  formFields: {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-  };
+  formSubtitle?: string;
+  formFields: Record<string, unknown>; // More flexible for potential future changes
 };
