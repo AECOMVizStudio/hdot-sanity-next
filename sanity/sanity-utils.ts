@@ -1,12 +1,11 @@
 import { createClient, groq } from "next-sanity";
-import { Comment } from "@/types/Comment";
 import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
 import { DocumentsPage } from "@/types/DocumentsPage";
 import { ProjectInfo } from "@/types/ProjectInfoPage";
 import { FAQ } from "@/types/FAQPage";
 
-const client = createClient({
+export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
@@ -83,27 +82,6 @@ export async function getCommentsPage(): Promise<CommentsPage | null> {
     throw new Error("Failed to fetch commentsPage");
   }
 }
-
-// export async function createComment(
-//   commentData: Omit<Comment, "_id" | "_createdAt"> // Only omit from input
-// ): Promise<Comment> {
-//   try {
-//     const comment = await client.create({
-//       _type: "comment",
-//       name: commentData.name,
-//       email: commentData.email,
-//       subject: commentData.subject || "",
-//       message: commentData.message,
-//       subscriber: commentData.subscriber,
-//     });
-
-//     // Since Sanity includes the _id and _createdAt automatically, we don't need to omit them here
-//     return comment as Comment; // Type assertion to ensure it matches the Comment type
-//   } catch (error) {
-//     console.error("Failed to create comment:", error);
-//     throw new Error("Failed to create comment");
-//   }
-// }
 
 export async function getDocumentsPage(): Promise<DocumentsPage> {
   const query = `

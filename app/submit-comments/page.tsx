@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getCommentsPage } from "@/sanity/sanity-utils";
 import Image from "next/image";
+import { form } from "sanity/structure";
 
 interface FormFields {
   name: string;
@@ -13,6 +14,14 @@ interface FormFields {
 
 function SubmitComments() {
   const [commentsPage, setCommentsPage] = useState<any>(null);
+  const [formData, setFormData] = useState<FormFields>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    subscriber: false,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Fetch the comments page data client-side when the component mounts
@@ -64,6 +73,57 @@ function SubmitComments() {
     subscriber: false,
   };
 
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const { name, value, type } = e.target as HTMLInputElement;
+    const checked = (e.target as HTMLInputElement).checked;
+
+    // Check if the element is a checkbox
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value, // If it's a checkbox, use `checked`, otherwise `value`
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Make your API request here, sending formData
+    try {
+      const response = await fetch("/api/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error submitting the form");
+      }
+
+      // Reset form data after submission
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        subscriber: false,
+      });
+      alert("Thank you for your submission!");
+    } catch (error) {
+      alert("There was an error submitting your form.");
+    } finally {
+      setIsSubmitting(false);
+    }
+    console.log("Form submitted", formData);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Title and Description */}
@@ -78,7 +138,7 @@ function SubmitComments() {
           <h2 className="text-2xl font-semibold">
             {commentsPage.formSubtitle}
           </h2>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block">
                 {formFields.name || "Name"}
@@ -87,6 +147,8 @@ function SubmitComments() {
                 type="text"
                 id="name"
                 name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded"
                 required
               />
@@ -99,6 +161,8 @@ function SubmitComments() {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded"
                 required
               />
@@ -111,8 +175,9 @@ function SubmitComments() {
                 type="text"
                 id="subject"
                 name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded"
-                required
               />
             </div>
             <div>
@@ -122,8 +187,9 @@ function SubmitComments() {
               <textarea
                 id="message"
                 name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded"
-                required
               />
             </div>
             <div>
@@ -134,11 +200,13 @@ function SubmitComments() {
                 type="checkbox"
                 id="subscriber"
                 name="subscriber"
+                checked={formData.subscriber}
+                onChange={handleChange}
                 className="w-4 h-4 border border-gray-300 rounded"
               />
             </div>
-            <button type="submit" className="btn">
-              Submit
+            <button type="submit" className="btn" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>
