@@ -49,10 +49,9 @@ export async function getHomePage(): Promise<HomePage> {
   }
 }
 
-export async function getCommentsPage(): Promise<CommentsPage | null> {
-  try {
-    const commentsPage: CommentsPage | null = await client.fetch(
-      groq`
+export async function getCommentsPage(): Promise<CommentsPage> {
+  const commentsPage = await client.fetch(
+    groq`
         *[_type == "commentsPage"][0]{
           _id,
           _createdAt,
@@ -75,12 +74,8 @@ export async function getCommentsPage(): Promise<CommentsPage | null> {
           }
         }
       `
-    );
-    return commentsPage;
-  } catch (error) {
-    console.error("Failed to fetch commentsPage:", error);
-    throw new Error("Failed to fetch commentsPage");
-  }
+  );
+  return commentsPage;
 }
 
 export async function getDocumentsPage(): Promise<DocumentsPage> {

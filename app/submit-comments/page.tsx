@@ -1,32 +1,27 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react"; // Import useEffect
 import { getCommentsPage } from "@/sanity/sanity-utils";
 import Image from "next/image";
 
-interface FormFields {
+interface FormData {
   name: string;
   email: string;
   subject: string;
   message: string;
   subscriber: boolean;
 }
+interface FormLabels {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  subscriber: string;
+}
 
 function SubmitComments() {
-  interface CommentsPage {
-    title: string;
-    description: string;
-    formSubtitle: string;
-    formFields: FormFields;
-    mainImage: {
-      asset: {
-        url: string;
-      };
-      alt: string;
-    };
-  }
-
-  const [commentsPage, setCommentsPage] = useState<CommentsPage | null>(null);
-  const [formData, setFormData] = useState<FormFields>({
+  // Remove async
+  const [commentsPage, setCommentsPage] = useState<any>(null); // Initialize as null
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
@@ -36,15 +31,37 @@ function SubmitComments() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    // Fetch the comments page data client-side when the component mounts
-    const fetchCommentsPage = async () => {
+    async function fetchData() {
       const data = await getCommentsPage();
-      setCommentsPage(data);
-    };
 
-    fetchCommentsPage();
+      // Apply defaults
+      if (data) {
+        if (!data.description) data.description = "";
+        if (!data.mainImage?.asset?.url) {
+          data.mainImage = {
+            asset: {
+              _id: "", // Keep _id if needed by your schema
+              url: "", // Add missing url property
+            },
+            alt: "",
+          };
+        }
+        if (!data.title) data.title = "";
+        if (!data.formSubtitle) data.formSubtitle = "";
+        if (!data.formFields) {
+          data.formFields = {
+            name: "Name",
+            email: "Email",
+            subject: "Subject",
+            message: "Message",
+            subscriber: "Keep me updated on this project!",
+          };
+        }
+        setCommentsPage(data);
+      }
+    }
+    fetchData();
   }, []);
-
   // skeleton loading state
   if (!commentsPage) {
     return (
@@ -76,14 +93,8 @@ function SubmitComments() {
       </div>
     );
   }
-
-  const formFields: FormFields = commentsPage.formFields || {
-    name: "Name",
-    email: "Email",
-    subject: "Subject",
-    message: "Message",
-    subscriber: false,
-  };
+  // Get form labels from Sanity
+  const formFields: FormLabels = commentsPage.formFields;
 
   const handleChange = (
     e:
@@ -202,7 +213,7 @@ function SubmitComments() {
             </div>
             <div>
               <label htmlFor="subscriber" className="block">
-                {formFields.subscriber || "Keep me updated on this project!"}
+                {formFields.subscriber}
               </label>
               <input
                 type="checkbox"
