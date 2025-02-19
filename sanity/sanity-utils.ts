@@ -49,33 +49,29 @@ export async function getHomePage(): Promise<HomePage> {
   }
 }
 
-export async function getCommentsPage(): Promise<CommentsPage> {
-  const commentsPage = await client.fetch(
+export function getCommentsPage(): Promise<CommentsPage> {
+  return client.fetch(
     groq`
-        *[_type == "commentsPage"][0]{
-          _id,
-          _createdAt,
-          title,
-          description,
-          mainImage{
-            asset->{
-              _id,
-              url
-            },
-            alt
+      *[_type == "commentsPage"][0] {
+        title,
+        description,
+        formSubtitle,
+        mainImage{
+          asset->{
+            url
           },
-          formSubtitle,
-          formFields{
-            name,
-            email,
-            subject,
-            message,
-            subscriber
-          }
+          alt
+        },
+        formFields{
+          name,
+          email,
+          subject,
+          message,
+          subscriber
         }
-      `
+      }
+    `
   );
-  return commentsPage;
 }
 
 export async function getDocumentsPage(): Promise<DocumentsPage> {

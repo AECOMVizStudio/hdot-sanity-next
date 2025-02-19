@@ -41,7 +41,6 @@ export const commentSchema = defineType({
         timeFormat: "HH:mm",
         timeStep: 5,
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
 });
