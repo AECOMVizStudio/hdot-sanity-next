@@ -1,25 +1,9 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { getFAQ } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import { FAQ } from "@/types/FAQPage";
 
-const FAQPage = () => {
-  const [faq, setFAQ] = useState<FAQ | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getFAQ();
-      setFAQ(data);
-    };
-
-    fetchData();
-  }, []);
-
-  if (!faq) {
-    return <div className="text-center text-hdotGray">Loading...</div>;
-  }
+async function FAQPage() {
+  const faq: FAQ = await getFAQ();
 
   return (
     <div className="container mx-auto px-4 py-8 bg-hdotSand">
@@ -55,6 +39,6 @@ const FAQPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default FAQPage;
