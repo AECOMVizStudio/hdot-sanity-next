@@ -3,7 +3,7 @@
 import { useState } from "react";
 // import { Comment } from "@/types/Comment";
 
-const commentForm = () => {
+const CommentForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -145,4 +145,4 @@ const commentForm = () => {
   );
 };
 
-export default commentForm;
+export default CommentForm;
