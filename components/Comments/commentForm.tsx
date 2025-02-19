@@ -125,10 +125,7 @@ const commentForm = () => {
           className="w-full p-2 border border-gray-300 rounded"
         />
       </div>
-      <div>
-        <label htmlFor="subscriber" className="block">
-          {}
-        </label>
+      <div className="flex flex-row">
         <input
           type="checkbox"
           id="subscriber"
@@ -137,6 +134,9 @@ const commentForm = () => {
           onChange={handleChange}
           className="w-4 h-4 border border-gray-300 rounded"
         />
+        <label htmlFor="subscriber" className="block px-2">
+          Keep me informed! I want to subscribe to the newsletter.
+        </label>
       </div>
       <button type="submit" className="btn" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
