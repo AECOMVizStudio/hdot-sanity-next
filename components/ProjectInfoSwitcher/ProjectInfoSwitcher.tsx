@@ -8,7 +8,7 @@ interface ProjectInfoProps {
 
 const ProjectInfoSwitcher: React.FC<ProjectInfoProps> = ({ projectInfo }) => {
   return (
-    <div className="flex justify-center flex-col">
+    <div className="flex justify-center flex-col bg-hdotBgAqua">
       <div className="space-y-16">
         {/* Background Section */}
         <section className="mb-8 bg-hdotBgAqua rounded-lg p-6 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -31,7 +31,7 @@ const ProjectInfoSwitcher: React.FC<ProjectInfoProps> = ({ projectInfo }) => {
             </div>
           )}
         </section>
-
+        <hr className="border-t-2 border-hdotTeal my-4 w-1/3 mx-auto" />
         {/* Purpose/Need Section */}
         <section className="mb-8 bg-hdotBgAqua rounded-lg p-6 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col items-center">
@@ -53,6 +53,7 @@ const ProjectInfoSwitcher: React.FC<ProjectInfoProps> = ({ projectInfo }) => {
             </div>
           )}
         </section>
+        <hr className="border-t-2 border-hdotTeal my-4 w-1/3 mx-auto" />
 
         {/* Timeline Section */}
         <section className="mb-8 bg-hdotBgAqua rounded-lg p-6 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-8">
