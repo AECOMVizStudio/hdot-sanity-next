@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="w-full flex flex-col md:flex-row">
+      <div className="w-full flex flex-col md:flex-row bg-hdotBgTeal">
         {/* Image */}
         <div className="w-full md:w-1/2">
           <Image
@@ -26,7 +26,7 @@ export default async function Home() {
         </div>
 
         {/* Content */}
-        <div className="w-full md:w-1/2 text-hdotTeal flex flex-col justify-center px-12 py-12 bg-hdotBgTeal space-y-6">
+        <div className="w-full md:w-1/2 text-hdotTeal flex flex-col justify-center px-12 py-12 space-y-6">
           <h1 className="text-xl">{homePage.subtitle}</h1>
           <h2 className="text-4xl font-bold">{homePage.title}</h2>
 
