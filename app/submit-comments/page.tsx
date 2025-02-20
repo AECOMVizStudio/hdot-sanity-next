@@ -10,12 +10,15 @@ async function SubmitComments() {
     return (
       <div className="container mx-auto px-4 py-8">
         {/* Title and Description */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-semibold">{commentsPage.title}</h1>
-          <p className="text-lg text-gray-700">{commentsPage.description}</p>
+        <div className="flex flex-col items-start md:items-center mb-8">
+          <h1 className="text-3xl font-semibold text-hdotTeal">
+            {commentsPage.title}
+          </h1>
+          <p className="text-lg text-hdotTeal">{commentsPage.description}</p>
+          <hr className="border-t-2 border-hdotTeal my-4 w-1/2 md:w-1/4" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Comment Form */}
           <div className="flex flex-col space-y-4">
             <h2 className="text-2xl font-semibold">
@@ -24,8 +27,8 @@ async function SubmitComments() {
             <CommentForm />
           </div>
 
-          {/* Image */}
-          <div className="flex items-center justify-center">
+          {/* Image - Centered within its grid cell */}
+          <div className="flex justify-center items-center">
             <Image
               src={commentsPage.mainImage.asset.url}
               alt={commentsPage.mainImage.alt || "Default alt text"}

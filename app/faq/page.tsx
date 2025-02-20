@@ -13,7 +13,7 @@ async function FAQPage() {
       <div className="space-y-6">
         {faq.questions.map((q, index) => (
           <div key={index} className="bg-hdotBgAqua p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold mb-4 text-hdotGray">
+            <h2 className="text-2xl font-semibold mb-4 text-hdotHoverTeal">
               {q.question}
             </h2>
             <PortableText

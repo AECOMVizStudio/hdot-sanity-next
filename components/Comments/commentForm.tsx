@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-// import { Comment } from "@/types/Comment";
 
 const CommentForm = () => {
   const [formData, setFormData] = useState({
@@ -74,7 +73,7 @@ const CommentForm = () => {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="name" className="block">
-          {commentsPage.formFields.name || "Name"}
+          {(commentsPage.formFields.name || "Name") + " *"}
         </label>
         <input
           type="text"
@@ -82,13 +81,13 @@ const CommentForm = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-hdotAqua"
           required
         />
       </div>
       <div>
         <label htmlFor="email" className="block">
-          {commentsPage.formFields.email || "Email"}
+          {(commentsPage.formFields.email || "Email") + " *"}
         </label>
         <input
           type="email"
@@ -96,7 +95,7 @@ const CommentForm = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-hdotAqua"
           required
         />
       </div>
@@ -110,7 +109,7 @@ const CommentForm = () => {
           name="subject"
           value={formData.subject}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-hdotAqua"
         />
       </div>
       <div>
@@ -122,7 +121,7 @@ const CommentForm = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-hdotAqua"
         />
       </div>
       <div className="flex flex-row">
@@ -132,7 +131,7 @@ const CommentForm = () => {
           name="subscriber"
           checked={formData.subscriber}
           onChange={handleChange}
-          className="w-4 h-4 border border-gray-300 rounded"
+          className="w-4 h-4 border border-hdotAqua"
         />
         <label htmlFor="subscriber" className="block px-2">
           Keep me informed! I want to subscribe to the project e-mail list.
