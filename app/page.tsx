@@ -47,7 +47,6 @@ export default async function Home() {
             imageIsOnRight={section.imageIsOnRight}
             imageSrc={section.image.asset.url}
             altText={section.altText}
-            bgColor="bg-hdotBgAqua"
           >
             <PortableText value={section.content} />
             {section.buttonText && section.buttonLink && (

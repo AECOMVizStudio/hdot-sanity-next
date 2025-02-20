@@ -7,7 +7,6 @@ interface SectionProps {
   children: ReactNode;
   imageSrc: string;
   altText: string;
-  bgColor?: string;
 }
 
 const Section = ({
@@ -16,7 +15,6 @@ const Section = ({
   imageIsOnRight,
   imageSrc,
   altText,
-  bgColor,
 }: SectionProps) => {
   return (
     <section className={`my-8 p-8 `}>
