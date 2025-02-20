@@ -4,7 +4,7 @@ import Logo from "@/components/Logo/Logo";
 
 const Navbar = () => {
   return (
-    <nav className=" bg-white text-black p-4 ">
+    <nav className=" bg-hdotTeal text-white p-4 ">
       <div className="container mx-auto flex items-center justify-between">
         <Logo />
         <ul className="flex space-x-4">

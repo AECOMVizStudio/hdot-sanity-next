@@ -135,7 +135,7 @@ const CommentForm = () => {
           className="w-4 h-4 border border-gray-300 rounded"
         />
         <label htmlFor="subscriber" className="block px-2">
-          Keep me informed! I want to subscribe to the project e-mail list
+          Keep me informed! I want to subscribe to the project e-mail list.
         </label>
       </div>
       <button type="submit" className="btn" disabled={isSubmitting}>
