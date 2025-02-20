@@ -9,27 +9,27 @@ const Navbar = () => {
         <Logo />
         <ul className="flex space-x-4">
           <li>
-            <Link href="/" className="hover:text-hdotTeal">
+            <Link href="/" className="">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/project-information" className="hover:text-hdotTeal">
+            <Link href="/project-information" className="">
               Project Information
             </Link>
           </li>
           <li>
-            <Link href="/document-library" className="hover:text-hdotTeal">
+            <Link href="/document-library" className="">
               Document Library
             </Link>
           </li>
           <li>
-            <Link href="/faq" className="hover:text-hdotTeal">
+            <Link href="/faq" className="">
               FAQ
             </Link>
           </li>
           <li>
-            <Link href="/submit-comments" className="hover:text-hdotTeal">
+            <Link href="/submit-comments" className="">
               Provide Feedback
             </Link>
           </li>

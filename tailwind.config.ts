@@ -13,6 +13,8 @@ export default {
         foreground: "var(--foreground)",
         hdotGray: "#5c5c5c",
         hdotTeal: "#22767c",
+        hdotBgTeal: "#e9f1f2",
+        hdotHoverTeal: "#1b5e63",
         hdotAqua: "#6fcddb",
         hdotYellow: "#ffbe20",
         hdotSand: "#d0c4ac",

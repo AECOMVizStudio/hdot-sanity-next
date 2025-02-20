@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getHomePage } from "@/sanity/sanity-utils";
 import { PortableText } from "next-sanity";
 
@@ -12,24 +13,24 @@ export default async function Home() {
 
   return (
     <>
-      <div className="z-10 relative w-full flex items-center justify-center flex-col text-white py-28">
-        {/* To do: make it display random background image from photGallery*/}
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: `url(${homePage.photoGallery[1].asset.url})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-
-        <div className="absolute inset-0 bg-black opacity-50" />
+      <div className="w-full flex flex-col md:flex-row">
+        {/* Image */}
+        <div className="w-full md:w-1/2">
+          <Image
+            src={homePage.photoGallery[0].asset.url}
+            alt="background image"
+            width={1080}
+            height={960}
+            className="w-full h-auto object-cover"
+          />
+        </div>
 
         {/* Content */}
-        <div className="relative text-center z-10 max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl font-bold">{homePage.title}</h1>
-          <h2 className="text-2xl text-center mt-4">{homePage.subtitle}</h2>
+        <div className="w-full md:w-1/2 text-hdotTeal flex flex-col justify-center px-12 py-12 bg-hdotBgTeal space-y-6">
+          <h1 className="text-xl">{homePage.subtitle}</h1>
+          <h2 className="text-4xl font-bold">{homePage.title}</h2>
+
+          <hr className="border-t-2 border-hdotTeal my-4 w-1/2" />
 
           <a href={homePage.headerButtonLink} className="inline-block mt-6">
             <button className="btn">{homePage.headerButtonText}</button>
