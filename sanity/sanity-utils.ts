@@ -19,6 +19,7 @@ export async function getHomePage(): Promise<HomePage> {
       groq`*[_type == "homePage"][0]{
         title,
         titleLine2,
+        titleLine3,
         subtitle,
         headerButtonText,
         headerButtonLink,
