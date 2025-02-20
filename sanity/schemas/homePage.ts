@@ -11,6 +11,12 @@ const homePage = {
       validation: (Rule: any) => Rule.required().error("Title is required"),
     },
     {
+      name: "titleLine2",
+      title: "Title Line 2",
+      type: "string",
+      description: "Displayed beneath top center of Home page",
+    },
+    {
       name: "subtitle",
       title: "Subtitle",
       type: "string",
