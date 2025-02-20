@@ -7,6 +7,7 @@ interface SectionProps {
   children: ReactNode;
   imageSrc: string;
   altText: string;
+  bgColor?: string;
 }
 
 const Section = ({
@@ -15,9 +16,10 @@ const Section = ({
   imageIsOnRight,
   imageSrc,
   altText,
+  bgColor,
 }: SectionProps) => {
   return (
-    <section className="my-8 p-8 bg-white rounded-lg">
+    <section className={`my-8 p-8 `}>
       <div
         className={`flex flex-col md:flex-row items-center ${
           imageIsOnRight ? "md:flex-row" : "md:flex-row-reverse"

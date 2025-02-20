@@ -16,6 +16,7 @@ export default {
         hdotBgTeal: "#e9f1f2",
         hdotHoverTeal: "#1b5e63",
         hdotAqua: "#6fcddb",
+        hdotBgAqua: "#e2f5f8",
         hdotYellow: "#ffbe20",
         hdotSand: "#d0c4ac",
         hdotJade: "#2bb56e",

@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased bg-white">
         <Navbar />
-        <main className="rounded-lg shadow-lg">{children}</main>
+        <main className="rounded-lg">{children}</main>
         <Footer />
       </body>
     </html>
