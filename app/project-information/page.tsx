@@ -9,7 +9,7 @@ async function ProjectInformation() {
 
   return (
     <div className="container mx-auto pt-8">
-      <h1 className="text-4xl font-bold text-center text-hdotTeal">
+      <h1 className="text-4xl font-bold text-center text-hdotTeal pb-8">
         {projectInfo.pageTitle}
       </h1>
 

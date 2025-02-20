@@ -27,9 +27,9 @@ export default async function Home() {
 
         {/* Content */}
         <div className="w-full md:w-1/2 text-hdotTeal flex flex-col justify-center px-12 py-12 space-y-2">
-          <h1 className="text-4xl font-bold">{homePage.title}</h1>
-          <h2 className="text-4xl font-bold">{homePage.titleLine2}</h2>
-          <h2 className="text-4xl font-bold">{homePage.titleLine3}</h2>
+          <h1 className="text-3xl font-bold">{homePage.title}</h1>
+          <h2 className="text-3xl font-bold">{homePage.titleLine2}</h2>
+          <h2 className="text-3xl font-bold">{homePage.titleLine3}</h2>
           <h3 className="text-xl py-4">{homePage.subtitle}</h3>
           <hr className="border-t-2 border-hdotTeal my-4 w-1/2" />
 
