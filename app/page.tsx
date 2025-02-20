@@ -38,7 +38,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto">
         {homePage.sections.map((section, index) => (
           <Section
             key={index}

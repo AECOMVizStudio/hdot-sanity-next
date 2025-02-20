@@ -17,7 +17,7 @@ const Section = ({
   altText,
 }: SectionProps) => {
   return (
-    <section className="my-8 p-8 bg-gray-100 rounded-lg">
+    <section className="my-8 p-8 bg-white rounded-lg">
       <div
         className={`flex flex-col md:flex-row items-center ${
           imageIsOnRight ? "md:flex-row" : "md:flex-row-reverse"
@@ -25,8 +25,9 @@ const Section = ({
       >
         {/* Content Section */}
         <div className="w-full md:w-1/2 text-center md:text-left p-4">
-          <h2 className="text-2xl font-semibold mb-4">{title}</h2>
-          <div>{children}</div>
+          <h2 className="text-3xl font-semibold text-hdotTeal mb-4">{title}</h2>
+          <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
+          <div className="text-hdotHoverTeal text-lg">{children}</div>
         </div>
 
         {/* Image Section */}
@@ -36,7 +37,7 @@ const Section = ({
             alt={altText}
             width={500} // Adjust width as needed
             height={300} // Adjust height as needed
-            className="rounded-lg"
+            className=""
           />
         </div>
       </div>
