@@ -4,6 +4,8 @@ export type HomePage = {
   _id: string;
   _createdAt: Date;
   title: string;
+  titleLine2?: string;
+  titleLine3?: string;
   subtitle: string;
   headerButtonText: string;
   headerButtonLink: string;

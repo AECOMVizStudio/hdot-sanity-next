@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-gradient-to-b from-hdotSand to-hdotTeal min-h-screen">
+      <body className="antialiased bg-white flex flex-col min-h-screen">
         <Navbar />
-        <main className="mx-auto rounded-lg shadow-lg">{children}</main>
+        <main className="rounded-lg flex-1">{children}</main>
         <Footer />
       </body>
     </html>

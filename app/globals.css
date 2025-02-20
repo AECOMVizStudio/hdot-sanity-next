@@ -18,6 +18,7 @@
 
 body {
   font-family: "Aptos", sans-serif;
+  overflow-x: hidden;
 }
 
 .portable-text a {
@@ -25,5 +26,5 @@ body {
 }
 
 .btn {
-  @apply bg-hdotTeal border-2 border-hdotAqua text-white font-bold py-2 px-6 rounded-lg shadow-lg hover:border-hdotJade hover:bg-teal-700;
+  @apply bg-hdotTeal border-2 border-hdotAqua text-white font-bold py-2 px-6 rounded-lg shadow-lg hover:border-hdotTeal hover:bg-hdotHoverTeal;
 }
