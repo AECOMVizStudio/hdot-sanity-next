@@ -9,13 +9,7 @@ export type ProjectInfo = {
     };
     altText: string;
   };
-  projectPurposeNeedText: PortableTextBlock[];
-  projectPurposeNeedImage: {
-    asset: {
-      url: string;
-    };
-    altText: string;
-  };
+
   projectTimelineText: PortableTextBlock[];
   projectTimelineImage: {
     asset: {

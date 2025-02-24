@@ -33,28 +33,6 @@ const projectInfo = {
       ],
     },
     {
-      name: "projectPurposeNeedText",
-      title: "Project Purpose/Need Text",
-      type: "array",
-      of: [{ type: "block" }],
-    },
-    {
-      name: "projectPurposeNeedImage",
-      title: "Project Purpose/Need Image",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        {
-          name: "altText",
-          title: "Alt Text",
-          type: "string",
-          description: "Describe the image for accessibility.",
-          validation: (Rule: any) =>
-            Rule.required().error("Alt text is required"),
-        },
-      ],
-    },
-    {
       name: "projectTimelineText",
       title: "Project Timeline Text",
       type: "array",
