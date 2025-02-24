@@ -32,28 +32,6 @@ const ProjectInfoSwitcher: React.FC<ProjectInfoProps> = ({ projectInfo }) => {
           )}
         </section>
         <hr className="border-t-2 border-hdotTeal my-4 w-1/3 mx-auto" />
-        {/* Purpose/Need Section */}
-        <section className="mb-8 bg-hdotBgAqua rounded-lg p-6 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex flex-col items-center">
-            <h2 className="text-hdotTeal text-2xl font-bold mb-4 text-center">
-              Project Purpose/Need
-            </h2>
-            <PortableText value={projectInfo.projectPurposeNeedText} />
-          </div>
-
-          {projectInfo.projectPurposeNeedImage && (
-            <div className="flex justify-center items-center mt-6">
-              <Image
-                src={projectInfo.projectPurposeNeedImage.asset.url}
-                alt={projectInfo.projectPurposeNeedImage.altText}
-                width={600}
-                height={350}
-                className="rounded-lg max-h-96 w-auto"
-              />
-            </div>
-          )}
-        </section>
-        <hr className="border-t-2 border-hdotTeal my-4 w-1/3 mx-auto" />
 
         {/* Timeline Section */}
         <section className="mb-8 bg-hdotBgAqua rounded-lg p-6 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-8">
