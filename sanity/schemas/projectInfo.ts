@@ -1,6 +1,8 @@
+import { defineField } from "sanity";
+
 const projectInfo = {
   name: "projectInfo",
-  title: "Project Information",
+  title: "Process Page - Formerly Project Info",
   type: "document",
   fields: [
     {
@@ -11,63 +13,56 @@ const projectInfo = {
         Rule.required().error("Page title is required"),
     },
     {
-      name: "projectBackgroundText",
-      title: "Project Background Text",
+      name: "cards",
+      title: "Info Cards",
       type: "array",
-      of: [{ type: "block" }],
-    },
-    {
-      name: "projectBackgroundImage",
-      title: "Project Background Image",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
+      of: [
         {
-          name: "altText",
-          title: "Alt Text",
-          type: "string",
-          description: "Describe the image for accessibility.",
-          validation: (Rule: any) =>
-            Rule.required().error("Alt text is required"),
+          type: "object",
+          name: "card",
+          title: "Info Card",
+          fields: [
+            defineField({
+              name: "title",
+              title: "Title",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "image",
+              title: "Image",
+              type: "image",
+              options: { hotspot: true },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "alt",
+              title: "Alt text",
+              type: "string",
+
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "bulletPoints",
+              title: "Bullet Points",
+              type: "array",
+              of: [{ type: "string" }],
+              validation: (Rule) => Rule.max(3),
+            }),
+
+            defineField({
+              name: "detailedDescription",
+              title: "Detailed Description",
+              type: "array",
+              of: [{ type: "block" }],
+              validation: (Rule) =>
+                Rule.required()
+                  .min(20)
+                  .warning("Consider adding more details."),
+            }),
+          ],
         },
       ],
-    },
-    {
-      name: "projectTimelineText",
-      title: "Project Timeline Text",
-      type: "array",
-      of: [{ type: "block" }],
-    },
-    {
-      name: "projectTimelineImage",
-      title: "Project Timeline Image",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        {
-          name: "altText",
-          title: "Alt Text",
-          type: "string",
-          description: "Describe the image for accessibility.",
-          validation: (Rule: any) =>
-            Rule.required().error("Alt text is required"),
-        },
-      ],
-    },
-    {
-      name: "buttonText",
-      title: "Button Text",
-      type: "string",
-    },
-    {
-      name: "buttonLink",
-      title: "Button Link",
-      type: "url",
-      validation: (Rule: any) =>
-        Rule.uri({
-          allowRelative: true,
-          scheme: ["http", "https", "mailto", "tel"],
-        }).error("Only relative URLs are allowed"),
     },
   ],
 };
