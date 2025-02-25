@@ -49,10 +49,12 @@ const projectInfo = {
               of: [{ type: "string" }],
               validation: (Rule) => Rule.max(3),
             }),
+
             defineField({
               name: "detailedDescription",
               title: "Detailed Description",
-              type: "text",
+              type: "array",
+              of: [{ type: "block" }],
               validation: (Rule) =>
                 Rule.required()
                   .min(20)

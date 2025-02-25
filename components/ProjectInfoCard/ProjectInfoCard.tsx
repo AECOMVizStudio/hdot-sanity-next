@@ -1,10 +1,22 @@
-import { PortableText } from "next-sanity";
+"use client";
+import { PortableText } from "@portabletext/react";
+import { useState } from "react";
 import Image from "next/image";
 
 import { Card } from "@/types/ProjectInfoPage";
 
+// const portableTextComponents = {
+//   types: {
+//     block: ({ value }) => {
+//       return <p className="text-black text-lg">{value}</p>;
+//     },
+//   },
+// };
+// components={portableTextComponents}
+
 function ProjectInfoCard(props: Card) {
-  console.log(props);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <section
       className="mb-8 bg-hdotBgAqua rounded-lg py-6 shadow-md"
@@ -31,8 +43,16 @@ function ProjectInfoCard(props: Card) {
           );
         })}
       </ul>
+
+      {isExpanded && <PortableText value={props.detailedDescription} />}
+
       <div className="text-center">
-        <button className="text-hdotTeal font-bold">Expand</button>
+        <button
+          className="text-hdotTeal font-bold"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? "Collapse" : "Expand"}
+        </button>
       </div>
     </section>
   );
