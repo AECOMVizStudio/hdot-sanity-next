@@ -1,6 +1,6 @@
 import { PortableText } from "next-sanity";
 import Image from "next/image";
-import { ProjectInfo } from "@/types/ProjectInfoPage";
+
 import { Card } from "@/types/ProjectInfoPage";
 
 function ProjectInfoCard(props: Card) {

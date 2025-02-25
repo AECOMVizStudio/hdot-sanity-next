@@ -1,6 +1,6 @@
 import { getProjectInfo } from "@/sanity/sanity-utils";
 import ProjectInfoCard from "@/components/ProjectInfoCard/ProjectInfoCard";
-import { ProjectInfo, Card } from "@/types/ProjectInfoPage";
+import { ProjectInfo } from "@/types/ProjectInfoPage";
 
 async function Process() {
   const projectInfo: ProjectInfo = await getProjectInfo();
