@@ -5,15 +5,6 @@ import Image from "next/image";
 
 import { Card } from "@/types/ProjectInfoPage";
 
-// const portableTextComponents = {
-//   types: {
-//     block: ({ value }) => {
-//       return <p className="text-black text-lg">{value}</p>;
-//     },
-//   },
-// };
-// components={portableTextComponents}
-
 function ProjectInfoCard(props: Card) {
   const [isExpanded, setIsExpanded] = useState(false);
 
