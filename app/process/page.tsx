@@ -12,9 +12,12 @@ async function Process() {
       <h1 className="text-4xl font-bold text-center text-hdotTeal pb-8">
         {projectInfo.pageTitle}
       </h1>
-
-      <ProjectInfoSwitcher projectInfo={projectInfo} />
-
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <ProjectInfoSwitcher props={projectInfo} />
+        <ProjectInfoSwitcher props={projectInfo} />
+        <ProjectInfoSwitcher props={projectInfo} />
+        <ProjectInfoSwitcher props={projectInfo} />
+      </div>
       {projectInfo.buttonText && projectInfo.buttonLink && (
         <div className="text-center mt-8">
           <a href={projectInfo.buttonLink} className="inline-block btn">
