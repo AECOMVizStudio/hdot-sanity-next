@@ -4,7 +4,7 @@ import ProjectInfoSwitcher from "@/components/ProjectInfoSwitcher/ProjectInfoSwi
 
 import { ProjectInfo } from "@/types/ProjectInfoPage";
 
-async function ProjectInformation() {
+async function Process() {
   const projectInfo: ProjectInfo = await getProjectInfo();
 
   return (
@@ -26,4 +26,4 @@ async function ProjectInformation() {
   );
 }
 
-export default ProjectInformation;
+export default Process;

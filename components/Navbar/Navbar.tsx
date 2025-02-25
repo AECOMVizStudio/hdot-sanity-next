@@ -14,8 +14,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/project-information" className="">
-              Project Information
+            <Link href="/process" className="">
+              Process
             </Link>
           </li>
           <li>
