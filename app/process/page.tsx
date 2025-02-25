@@ -1,8 +1,6 @@
 import { getProjectInfo } from "@/sanity/sanity-utils";
-
-import ProjectInfoSwitcher from "@/components/ProjectInfoSwitcher/ProjectInfoSwitcher";
-
-import { ProjectInfo } from "@/types/ProjectInfoPage";
+import ProjectInfoCard from "@/components/ProjectInfoCard/ProjectInfoCard";
+import { ProjectInfo, Card } from "@/types/ProjectInfoPage";
 
 async function Process() {
   const projectInfo: ProjectInfo = await getProjectInfo();
@@ -13,18 +11,10 @@ async function Process() {
         {projectInfo.pageTitle}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <ProjectInfoSwitcher props={projectInfo} />
-        <ProjectInfoSwitcher props={projectInfo} />
-        <ProjectInfoSwitcher props={projectInfo} />
-        <ProjectInfoSwitcher props={projectInfo} />
+        {projectInfo.cards.map((card) => {
+          return <ProjectInfoCard {...card} key={card._key} />;
+        })}
       </div>
-      {projectInfo.buttonText && projectInfo.buttonLink && (
-        <div className="text-center mt-8">
-          <a href={projectInfo.buttonLink} className="inline-block btn">
-            {projectInfo.buttonText}
-          </a>
-        </div>
-      )}
     </div>
   );
 }

@@ -100,30 +100,21 @@ export async function getDocumentsPage(): Promise<DocumentsPage> {
 export async function getProjectInfo(): Promise<ProjectInfo> {
   return await client.fetch(
     groq`*[_type == "projectInfo"][0]{
+      _id,
       pageTitle,
-      projectBackgroundText,
-      projectBackgroundImage{
-        asset->{
-          url
+      cards[]{
+        _key,
+        id,
+        title,
+        image{
+          asset->{
+            url
+          }
         },
-        altText
-      },
-      projectPurposeNeedText,
-      projectPurposeNeedImage{
-        asset->{
-          url
-        },
-        altText
-      },
-      projectTimelineText,
-      projectTimelineImage{
-        asset->{
-          url
-        },
-        altText
-      },
-      buttonText,
-      buttonLink
+        alt,
+        bulletPoints,
+        detailedDescription
+      }
     }`
   );
 }

@@ -1,22 +1,21 @@
 import { PortableTextBlock } from "next-sanity";
 
-export type ProjectInfo = {
-  pageTitle: string;
-  projectBackgroundText: PortableTextBlock[];
-  projectBackgroundImage: {
+export interface Card {
+  _key: string;
+  title: string;
+  image: {
     asset: {
+      _id: string;
       url: string;
     };
-    altText: string;
   };
+  alt: string;
+  bulletPoints: string[];
+  detailedDescription: PortableTextBlock[];
+}
 
-  projectTimelineText: PortableTextBlock[];
-  projectTimelineImage: {
-    asset: {
-      url: string;
-    };
-    altText: string;
-  };
-  buttonText: string;
-  buttonLink: string;
-};
+export interface ProjectInfo {
+  _id: string;
+  pageTitle: string;
+  cards: Card[];
+}
