@@ -29,6 +29,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/get-involved" className="">
+              Get Involved
+            </Link>
+          </li>
+          <li>
             <Link href="/submit-comments" className="">
               Provide Feedback
             </Link>
