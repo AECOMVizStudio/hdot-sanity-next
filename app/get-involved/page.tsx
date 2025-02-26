@@ -18,7 +18,7 @@ async function getInvolved() {
         <hr className="border-t-2 border-hdotTeal w-1/2" />
         {getInvolvedPage.upcomingEventsList.map((upcomingEvent) => {
           return (
-            <section className="py-6 ">
+            <section className="py-6" key={upcomingEvent._key}>
               <div className="bg-gray-100 shadow-lg p-6">
                 <h2 className="text-xl font-bold uppercase tracking-wide">
                   {upcomingEvent.title} | {upcomingEvent.dateTime}
@@ -41,7 +41,7 @@ async function getInvolved() {
                 <div className="mt-3 flex items-center space-x-3">
                   {upcomingEvent.documentsList?.map((document) => {
                     return (
-                      <div>
+                      <div key={document.fileUrl}>
                         <p className="text-gray-500 uppercase text-xs font-semibold">
                           {document.title}
                         </p>
@@ -69,7 +69,7 @@ async function getInvolved() {
 
           {getInvolvedPage.pastEventsList.map((pastEvent) => {
             return (
-              <section className="py-6 ">
+              <section className="py-6" key={pastEvent._key}>
                 <div className="bg-gray-100 shadow-lg p-6">
                   <h2 className="text-xl font-bold uppercase tracking-wide">
                     {pastEvent.title} | {pastEvent.dateTime}
@@ -86,7 +86,7 @@ async function getInvolved() {
                   <div className="mt-3 flex items-center space-x-3">
                     {pastEvent.documentsList?.map((document) => {
                       return (
-                        <div>
+                        <div key={document.fileUrl}>
                           <p className="text-gray-500 uppercase text-xs font-semibold">
                             {document.title}
                           </p>

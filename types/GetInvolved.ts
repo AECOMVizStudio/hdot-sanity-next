@@ -5,6 +5,7 @@ export interface DocumentItem {
 }
 
 export interface Event {
+  _key: string;
   title: string;
   subtitle?: string;
   description: PortableTextBlock[];

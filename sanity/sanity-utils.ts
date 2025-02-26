@@ -18,10 +18,12 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
   try {
     const getInvolvedPage = await client.fetch(
       groq`*[_type == "getInvolved"][0]{
+      
         pageTitle,
         upcomingEventsTitle,
         upcomingEventsSubtitle,
         upcomingEventsList[]{
+        _key,
           title,
           subtitle,
           description,
@@ -36,6 +38,7 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
         pastEventsTitle,
         pastEventsSubtitle,
         pastEventsList[]{
+        _key,
           title,
           subtitle,
           description,
