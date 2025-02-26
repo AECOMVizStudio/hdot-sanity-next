@@ -22,13 +22,13 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
         upcomingEventsTitle,
         upcomingEventsSubtitle,
         upcomingEventsList[]{
-          upcomingTitle,
-         
-          upcomingDescription,
-          upcomingDateTime,
-          upcomingLink,
-          upcomingDocumentsSectionTitle,
-          upcomingDocumentsList[]{
+          title,
+          subtitle,
+          description,
+          dateTime,
+          link,
+          documentsSectionTitle,
+          documentsList[]{
             documentItem[]{
               title,
               "fileUrl": file.asset->url
@@ -38,12 +38,13 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
         pastEventsTitle,
         pastEventsSubtitle,
         pastEventsList[]{
-          pastTitle,
-          pastDescription,
-          pastDateTime,
-          pastLink,
-          pastDocumentsSectionTitle,
-          pastDocumentsList[]{
+          title,
+          subtitle,
+          description,
+          dateTime,
+          link,
+          documentsSectionTitle,
+          documentsList[]{
             documentItem[]{
               title,
               "fileUrl": file.asset->url
