@@ -12,9 +12,9 @@ async function getInvolved() {
       </h1>
 
       <div className="max-w-3xl mx-auto container">
-        <h2 className="text-2xl font-bold uppercase tracking-wide">
-          {getInvolvedPage.upcomingEventsTitle}
-        </h2>
+        <div className="text-2xl text-hdotTeal font-bold uppercase tracking-wide">
+          {getInvolvedPage.upcomingEventsTitle || "Upcoming Events"}
+        </div>
         <hr className="border-t-2 border-hdotTeal w-1/2" />
         {getInvolvedPage.upcomingEventsList.map((upcomingEvent) => {
           return (
@@ -28,19 +28,27 @@ async function getInvolved() {
                   <PortableText value={upcomingEvent.description} />
                 </div>
 
-                <h3 className="mt-6 text-lg font-bold uppercase text-green-700 tracking-wide">
-                  Meeting Materials
+                <div>
+                  <a href={upcomingEvent.link} className="hover:text-hdotJade">
+                    {upcomingEvent.link}
+                  </a>
+                </div>
+
+                <h3 className="mt-6 text-lg font-bold uppercase text-hdotJade tracking-wide">
+                  {upcomingEvent.documentsSectionTitle}
                 </h3>
 
                 <div className="mt-3 flex items-center space-x-3">
                   <div>
                     <p className="text-gray-500 uppercase text-xs font-semibold">
-                      PDF
+                      PDF title
                     </p>
                     <a
                       href="#"
-                      className="text-gray-800 hover:text-green-700 font-medium"
-                    ></a>
+                      className="text-gray-800 hover:hover:text-hdotJade font-medium"
+                    >
+                      PDF icon - link
+                    </a>
                   </div>
                 </div>
               </div>
@@ -50,9 +58,9 @@ async function getInvolved() {
 
         {/* Past Events */}
         <div>
-          <h2 className="text-2xl font-bold uppercase tracking-wide">
-            {getInvolvedPage.pastEventsTitle}
-          </h2>
+          <div className="text-2xl text-hdotTeal font-bold uppercase tracking-wide">
+            {getInvolvedPage.pastEventsTitle || "Past Events"}
+          </div>
           <hr className="border-t-2 border-hdotTeal w-1/2" />
 
           {getInvolvedPage.pastEventsList.map((pastEvent) => {
@@ -67,19 +75,21 @@ async function getInvolved() {
                     <PortableText value={pastEvent.description} />
                   </div>
 
-                  <h3 className="mt-6 text-lg font-bold uppercase text-green-700 tracking-wide">
-                    Meeting Materials
+                  <h3 className="mt-6 text-lg font-bold uppercase text-hdotJade">
+                    {pastEvent.documentsSectionTitle}
                   </h3>
 
                   <div className="mt-3 flex items-center space-x-3">
                     <div>
                       <p className="text-gray-500 uppercase text-xs font-semibold">
-                        PDF
+                        PDF title
                       </p>
                       <a
                         href="#"
-                        className="text-gray-800 hover:text-green-700 font-medium"
-                      ></a>
+                        className="text-gray-800 hover:hover:text-hdotJade font-medium"
+                      >
+                        PDF icon - link
+                      </a>
                     </div>
                   </div>
                 </div>
