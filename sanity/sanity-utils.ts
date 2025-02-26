@@ -112,6 +112,7 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
           }
         },
         alt,
+        subheading,
         bulletPoints,
         detailedDescription
       }
