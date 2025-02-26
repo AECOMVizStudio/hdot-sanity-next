@@ -45,6 +45,7 @@ export default async function Home() {
             key={index}
             title={section.title}
             imageIsOnRight={section.imageIsOnRight}
+            isTimeline={section.isTimeline}
             imageSrc={section.image.asset.url}
             altText={section.altText}
           >
