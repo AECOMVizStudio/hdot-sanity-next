@@ -4,7 +4,7 @@ import Image from "next/image";
 interface SectionProps {
   title: string;
   imageIsOnRight: boolean;
-  children: ReactNode;
+  children?: ReactNode;
   imageSrc: string;
   altText: string;
 }
