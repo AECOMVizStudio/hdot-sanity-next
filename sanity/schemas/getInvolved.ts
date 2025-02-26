@@ -103,11 +103,17 @@ const getInvolved = {
       ],
     },
     defineField({
-      name: "pastEvents",
+      name: "pastEventsTitle",
       title: "Past Events Title",
       type: "string",
       validation: (Rule) =>
         Rule.required().error("Upcoming Events Title is required"),
+    }),
+    defineField({
+      name: "pastEventsSubtitle",
+      title: "Past Events Subtitle",
+      type: "string",
+      description: "This field is optional",
     }),
     {
       name: "pastEventsList",
