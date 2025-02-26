@@ -12,11 +12,17 @@ const getInvolved = {
       validation: (Rule) => Rule.required().error("Page title is required"),
     }),
     defineField({
-      name: "upcomingEvents",
+      name: "upcomingEventsTitle",
       title: "Upcoming Events Title",
       type: "string",
       validation: (Rule) =>
         Rule.required().error("Upcoming Events Title is required"),
+    }),
+    defineField({
+      name: "upcomingEventsSubtitle",
+      title: "Upcoming Events Subtitle",
+      type: "string",
+      description: "This field is optional",
     }),
     {
       name: "upcomingEventsList",
@@ -25,8 +31,8 @@ const getInvolved = {
       of: [
         {
           type: "object",
-          name: "pastEvent",
-          title: "Past Event",
+          name: "upcomingEvent",
+          title: "Upcoming Event",
           fields: [
             defineField({
               name: "upcomingTitle",
@@ -34,12 +40,6 @@ const getInvolved = {
               type: "string",
               validation: (Rule) =>
                 Rule.required().error("Event title is required"),
-            }),
-            defineField({
-              name: "upcomingSubtitle",
-              title: "Event Subitle",
-              type: "string",
-              description: "This field is optional",
             }),
             defineField({
               name: "upcomingDescription",
@@ -61,6 +61,7 @@ const getInvolved = {
               name: "upcomingDocumentsSectionTitle",
               title: "Related Documents Title",
               type: "string",
+              description: "For example, 'Agenda' or 'Minutes'",
             }),
             {
               name: "upcomingDocumentsList",
@@ -68,23 +69,30 @@ const getInvolved = {
               type: "object",
               fields: [
                 {
-                  type: "object",
                   name: "documentItem",
                   title: "Document item",
-                  fields: [
-                    defineField({
-                      name: "title",
-                      title: "Document Title",
-                      type: "string",
-                      validation: (Rule) =>
-                        Rule.required().error("Document title is required"),
-                    }),
+                  type: "array",
+                  of: [
                     {
-                      name: "file",
-                      title: "PDF File",
-                      type: "file",
-                      description: "Upload a PDF file",
-                      options: { accept: ".pdf" },
+                      type: "object",
+                      name: "documentItem",
+                      title: "Document item",
+                      fields: [
+                        defineField({
+                          name: "title",
+                          title: "Document Title",
+                          type: "string",
+                          validation: (Rule) =>
+                            Rule.required().error("Document title is required"),
+                        }),
+                        {
+                          name: "file",
+                          title: "PDF File",
+                          type: "file",
+                          description: "Upload a PDF file",
+                          options: { accept: ".pdf" },
+                        },
+                      ],
                     },
                   ],
                 },
@@ -144,6 +152,7 @@ const getInvolved = {
               name: "pastDocumentsSectionTitle",
               title: "Related Documents Title",
               type: "string",
+              description: "For example, 'Agenda' or 'Minutes'",
             }),
           ],
         },
@@ -154,23 +163,30 @@ const getInvolved = {
           type: "object",
           fields: [
             {
-              type: "object",
               name: "documentItem",
               title: "Document item",
-              fields: [
-                defineField({
-                  name: "title",
-                  title: "Document Title",
-                  type: "string",
-                  validation: (Rule) =>
-                    Rule.required().error("Document title is required"),
-                }),
+              type: "array",
+              of: [
                 {
-                  name: "file",
-                  title: "PDF File",
-                  type: "file",
-                  description: "Upload a PDF file",
-                  options: { accept: ".pdf" },
+                  type: "object",
+                  name: "documentItem",
+                  title: "Document item",
+                  fields: [
+                    defineField({
+                      name: "title",
+                      title: "Document Title",
+                      type: "string",
+                      validation: (Rule) =>
+                        Rule.required().error("Document title is required"),
+                    }),
+                    {
+                      name: "file",
+                      title: "PDF File",
+                      type: "file",
+                      description: "Upload a PDF file",
+                      options: { accept: ".pdf" },
+                    },
+                  ],
                 },
               ],
             },
