@@ -32,6 +32,7 @@ export type HomePageSection = {
   };
   altText: string;
   imageIsOnRight: boolean;
+  isTimeline?: boolean;
   buttonText?: string;
   buttonLink?: string;
 };

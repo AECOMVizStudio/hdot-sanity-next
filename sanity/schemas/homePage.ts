@@ -98,6 +98,13 @@ const homePage = {
                 "If checked, the image will appear on the right side.",
             },
             {
+              name: "isTimeline",
+              title: "Is this a timeline?",
+              type: "boolean",
+              description:
+                "Check this true ONLY if this section is a timeline, very important.",
+            },
+            {
               name: "buttonText",
               title: "Button Text",
               type: "string",
