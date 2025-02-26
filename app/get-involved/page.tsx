@@ -39,17 +39,21 @@ async function getInvolved() {
                 </h3>
 
                 <div className="mt-3 flex items-center space-x-3">
-                  <div>
-                    <p className="text-gray-500 uppercase text-xs font-semibold">
-                      PDF title
-                    </p>
-                    <a
-                      href="#"
-                      className="text-gray-800 hover:hover:text-hdotJade font-medium"
-                    >
-                      PDF icon - link
-                    </a>
-                  </div>
+                  {upcomingEvent.documentsList?.map((document) => {
+                    return (
+                      <div>
+                        <p className="text-gray-500 uppercase text-xs font-semibold">
+                          {document.title}
+                        </p>
+                        <a
+                          href={document.fileUrl}
+                          className="text-gray-800 hover:hover:text-hdotJade font-medium"
+                        >
+                          PDF icon - link
+                        </a>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </section>
@@ -80,17 +84,21 @@ async function getInvolved() {
                   </h3>
 
                   <div className="mt-3 flex items-center space-x-3">
-                    <div>
-                      <p className="text-gray-500 uppercase text-xs font-semibold">
-                        PDF title
-                      </p>
-                      <a
-                        href="#"
-                        className="text-gray-800 hover:hover:text-hdotJade font-medium"
-                      >
-                        PDF icon - link
-                      </a>
-                    </div>
+                    {pastEvent.documentsList?.map((document) => {
+                      return (
+                        <div>
+                          <p className="text-gray-500 uppercase text-xs font-semibold">
+                            {document.title}
+                          </p>
+                          <a
+                            href={document.fileUrl}
+                            className="text-gray-800 hover:hover:text-hdotJade font-medium"
+                          >
+                            PDF icon - link
+                          </a>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </section>

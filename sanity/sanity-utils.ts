@@ -29,10 +29,8 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
           link,
           documentsSectionTitle,
           documentsList[]{
-            documentItem[]{
-              title,
-              "fileUrl": file.asset->url
-            }
+            title,
+            "fileUrl": file.asset->url
           }
         },
         pastEventsTitle,
@@ -45,10 +43,8 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
           link,
           documentsSectionTitle,
           documentsList[]{
-            documentItem[]{
-              title,
-              "fileUrl": file.asset->url
-            }
+            title,
+            "fileUrl": file.asset->url
           }
         }
       }`
