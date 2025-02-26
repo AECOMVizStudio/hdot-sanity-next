@@ -4,6 +4,10 @@ export interface DocumentItem {
   fileUrl: string;
 }
 
+export interface DocumentsList {
+  documentItem: DocumentItem[];
+}
+
 export interface Event {
   title: string;
   subtitle?: string;
@@ -11,9 +15,7 @@ export interface Event {
   dateTime: string;
   link?: string;
   documentsSectionTitle?: string;
-  documentsList: {
-    documentItem?: DocumentItem[];
-  }[];
+  documentsList: DocumentsList[];
 }
 
 export interface GetInvolvedPage {
