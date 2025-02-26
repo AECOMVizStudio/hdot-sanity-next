@@ -10,6 +10,7 @@ export interface Card {
     };
   };
   alt: string;
+  subheading: string;
   bulletPoints: string[];
   detailedDescription: PortableTextBlock[];
 }

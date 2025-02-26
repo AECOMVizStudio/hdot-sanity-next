@@ -79,6 +79,8 @@ const homePage = {
               title: "Image",
               type: "image",
               options: { hotspot: true },
+              validation: (Rule: any) =>
+                Rule.required().error("Image is required"),
             },
             {
               name: "altText",

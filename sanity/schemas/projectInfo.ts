@@ -43,6 +43,13 @@ const projectInfo = {
               validation: (Rule) => Rule.required(),
             }),
             defineField({
+              name: "subheading",
+              title: "Subheading",
+              type: "string",
+
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
               name: "bulletPoints",
               title: "Bullet Points",
               type: "array",
