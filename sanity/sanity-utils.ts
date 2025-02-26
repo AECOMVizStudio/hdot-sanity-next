@@ -3,6 +3,7 @@ import { HomePage } from "@/types/HomePage";
 import { CommentsPage } from "@/types/CommentsPage";
 import { DocumentsPage } from "@/types/DocumentsPage";
 import { ProjectInfo } from "@/types/ProjectInfoPage";
+import { GetInvolvedPage } from "@/types/GetInvolved";
 import { FAQ } from "@/types/FAQPage";
 
 export const client = createClient({
@@ -12,6 +13,52 @@ export const client = createClient({
   token: process.env.SANITY_API_TOKEN,
   useCdn: false,
 });
+
+export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
+  try {
+    const getInvolvedPage = await client.fetch(
+      groq`*[_type == "getInvolved"][0]{
+      
+        pageTitle,
+        upcomingEventsTitle,
+        upcomingEventsSubtitle,
+        upcomingEventsList[]{
+        _key,
+          title,
+          subtitle,
+          description,
+          dateTime,
+          link,
+          documentsSectionTitle,
+          documentsList[]{
+            title,
+            "fileUrl": file.asset->url
+          }
+        },
+        pastEventsTitle,
+        pastEventsSubtitle,
+        pastEventsList[]{
+        _key,
+          title,
+          subtitle,
+          description,
+          dateTime,
+          link,
+          documentsSectionTitle,
+          documentsList[]{
+            title,
+            "fileUrl": file.asset->url
+          }
+        }
+      }`
+    );
+
+    return getInvolvedPage;
+  } catch (error) {
+    console.error("Failed to fetch getInvolvedPage:", error);
+    throw new Error("Failed to fetch getInvolvedPage");
+  }
+}
 
 export async function getHomePage(): Promise<HomePage> {
   try {

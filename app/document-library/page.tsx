@@ -4,6 +4,7 @@ import { DocumentsPage } from "@/types/DocumentsPage";
 const DocumentLibrary = async () => {
   try {
     const documentsPage: DocumentsPage = await getDocumentsPage();
+    console.log(documentsPage.subSections[0].documentLibrary[0].title);
 
     return (
       <div className="container mx-auto px-4 py-8">
