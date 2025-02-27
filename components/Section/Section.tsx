@@ -20,7 +20,7 @@ const Section = ({
 }: SectionProps) => {
   if (isTimeline === true) {
     return (
-      <div className="w-full flex flex-col justify-center items-center py-12 bg-gray-100 shadow-lg">
+      <div className="w-full flex flex-col justify-center items-center py-12 bg-hdotBgAqua shadow-lg">
         <div className="w-full md:w-1/2 text-center md:text-left p-4">
           <h2 className="text-3xl font-semibold text-hdotTeal mb-4">{title}</h2>
           <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
@@ -32,7 +32,7 @@ const Section = ({
           height={400}
           className="w-full"
         />
-        <div className="text-hdotHoverTeal text-lg md:text-left">
+        <div className="text-hdotHoverTeal text-lg md:text-left border-t-2 border-hdotTeal my-4 w-full md:w-1/2">
           {children}
         </div>
       </div>
