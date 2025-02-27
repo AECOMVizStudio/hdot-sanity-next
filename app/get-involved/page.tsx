@@ -2,6 +2,8 @@ import { PortableText } from "@portabletext/react";
 import { getGetInvolvedPage } from "@/sanity/sanity-utils";
 import { GetInvolvedPage } from "@/types/GetInvolved";
 
+import Survey from "@/components/Survey/Survey";
+
 async function getInvolved() {
   const getInvolvedPage: GetInvolvedPage = await getGetInvolvedPage();
 
@@ -105,6 +107,7 @@ async function getInvolved() {
             );
           })}
         </div>
+        <Survey />
       </div>
     </>
   );
