@@ -11,14 +11,14 @@ function ProjectInfoCard(props: Card) {
       <h2 className="text-2xl font-bold mb-4 ml-2 text-hdotTeal text-left min-h-20">
         {props.title}
       </h2>
-      <div className="w-full h-[250px] mb-4 relative">
+      <div className="w-full h-[250px] flex items-center justify-center mb-4 relative">
         <Image
           src={props.image.asset.url}
           alt={props.alt}
-          width={700}
-          height={500}
+          width={200}
+          height={200}
           objectFit="cover"
-          className="w-full h-[250px] rounded-lg shadow-sm"
+          className="w-90 h-auto rounded-lg shadow-sm"
         />
       </div>
       <div className="p-2">
