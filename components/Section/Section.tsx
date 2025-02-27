@@ -59,9 +59,10 @@ const Section = ({
             <Image
               src={imageSrc}
               alt={altText}
-              width={500} // Adjust width as needed
-              height={300} // Adjust height as needed
-              className="shadow-lg"
+              width={400} // Adjust width as needed
+              height={600}
+              objectFit="cover" // Adjust height as needed
+              className=""
             />
           </div>
         </div>
