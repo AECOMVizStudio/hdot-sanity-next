@@ -55,13 +55,13 @@ const Section = ({
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 p-4 flex justify-center">
+          <div className="w-full md:w-1/2 p-4 flex justify-center ">
             <Image
               src={imageSrc}
               alt={altText}
               width={500} // Adjust width as needed
               height={300} // Adjust height as needed
-              className=""
+              className="shadow-lg"
             />
           </div>
         </div>
