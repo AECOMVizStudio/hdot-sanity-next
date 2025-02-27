@@ -24,7 +24,9 @@ const Section = ({
         <div className="w-full md:w-1/2 text-center md:text-left p-4">
           <h2 className="text-3xl font-semibold text-hdotTeal mb-4">{title}</h2>
           <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
+          <p className="text-hdotHoverTeal text-lg">{children}</p>
         </div>
+        <div className="g md:text-left "></div>
         <Image
           src={imageSrc}
           alt={altText}
@@ -32,9 +34,6 @@ const Section = ({
           height={400}
           className="w-full"
         />
-        <div className="text-hdotHoverTeal text-lg md:text-left border-t-2 border-hdotTeal my-4 w-full md:w-1/2">
-          {children}
-        </div>
       </div>
     );
   } else {
