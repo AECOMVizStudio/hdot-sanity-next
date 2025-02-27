@@ -1,5 +1,3 @@
-import { PortableTextBlock } from "next-sanity";
-
 export interface Card {
   _key: string;
   title: string;
@@ -12,7 +10,8 @@ export interface Card {
   alt: string;
   subheading: string;
   bulletPoints: string[];
-  detailedDescription: PortableTextBlock[];
+  buttonText?: string;
+  buttonLink?: string;
 }
 
 export interface ProjectInfo {

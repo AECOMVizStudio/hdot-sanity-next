@@ -60,14 +60,19 @@ const projectInfo = {
             }),
 
             defineField({
-              name: "detailedDescription",
-              title: "Detailed Description",
-              type: "array",
-              of: [{ type: "block" }],
-              validation: (Rule) =>
-                Rule.required()
-                  .min(20)
-                  .warning("Consider adding more details."),
+              name: "buttonText",
+              title: "Button Text",
+              type: "string",
+              description:
+                "Text for the button - if left blank, no button will be displayed",
+            }),
+            defineField({
+              name: "buttonLink",
+              title: "Button Link",
+              type: "url",
+              description:
+                "Link for the button - for internal links, use the relative path. ex: /process",
+              validation: (Rule) => Rule.uri({ allowRelative: true }),
             }),
           ],
         },
