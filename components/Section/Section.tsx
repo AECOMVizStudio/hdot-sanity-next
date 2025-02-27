@@ -20,7 +20,7 @@ const Section = ({
 }: SectionProps) => {
   if (isTimeline === true) {
     return (
-      <div className="w-full flex flex-col justify-center items-center py-12 bg-gray-100 shadow-lg">
+      <div className="w-full flex flex-col justify-center items-center py-12 bg-hdotBgAqua shadow-lg">
         <div className="w-full md:w-1/2 text-center md:text-left p-4">
           <h2 className="text-3xl font-semibold text-hdotTeal mb-4">{title}</h2>
           <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
@@ -28,11 +28,13 @@ const Section = ({
         <Image
           src={imageSrc}
           alt={altText}
-          width={1000} // Adjust width as needed
-          height={400} // Adjust height as needed
-          className=""
+          width={1000}
+          height={400}
+          className="w-full"
         />
-        <div className="text-hdotHoverTeal text-lg">{children}</div>
+        <div className="text-hdotHoverTeal text-lg md:text-left border-t-2 border-hdotTeal my-4 w-full md:w-1/2">
+          {children}
+        </div>
       </div>
     );
   } else {
@@ -53,13 +55,13 @@ const Section = ({
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 p-4 flex justify-center">
+          <div className="w-full md:w-1/2 p-4 flex justify-center ">
             <Image
               src={imageSrc}
               alt={altText}
               width={500} // Adjust width as needed
               height={300} // Adjust height as needed
-              className=""
+              className="shadow-lg"
             />
           </div>
         </div>

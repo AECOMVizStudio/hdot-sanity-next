@@ -1,13 +1,8 @@
-"use client";
-import { PortableText } from "@portabletext/react";
-import { useState } from "react";
 import Image from "next/image";
 
 import { Card } from "@/types/ProjectInfoPage";
 
 function ProjectInfoCard(props: Card) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <section
       className="mb-8 bg-hdotBgAqua rounded-lg py-6 shadow-md max-h-fit"
@@ -20,9 +15,10 @@ function ProjectInfoCard(props: Card) {
         <Image
           src={props.image.asset.url}
           alt={props.alt}
-          layout="fill"
+          width={700}
+          height={500}
           objectFit="cover"
-          className="w-full"
+          className="w-full h-[250px] rounded-lg shadow-sm"
         />
       </div>
       <div className="p-2">
@@ -41,16 +37,15 @@ function ProjectInfoCard(props: Card) {
         })}
       </ul>
 
-      {isExpanded && <PortableText value={props.detailedDescription} />}
-
-      <div className="text-center">
-        <button
-          className="text-hdotTeal font-bold"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? "Collapse" : "Expand"}
-        </button>
-      </div>
+      {props.buttonLink && (
+        <div className="text-center">
+          <button className="text-hdotTeal font-bold btn">
+            <a href={props.buttonLink} target="_blank" rel="noreferrer">
+              {props.buttonText}
+            </a>
+          </button>
+        </div>
+      )}
     </section>
   );
 }
