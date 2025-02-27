@@ -15,9 +15,10 @@ function ProjectInfoCard(props: Card) {
         <Image
           src={props.image.asset.url}
           alt={props.alt}
-          layout="fill"
+          width={700}
+          height={500}
           objectFit="cover"
-          className="w-full"
+          className="w-full h-[250px] rounded-lg shadow-sm"
         />
       </div>
       <div className="p-2">
