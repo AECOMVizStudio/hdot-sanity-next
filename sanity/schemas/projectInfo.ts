@@ -1,5 +1,7 @@
 import { defineField } from "sanity";
 
+// process page - formerly project info
+
 const projectInfo = {
   name: "projectInfo",
   title: "Process Page - Formerly Project Info",

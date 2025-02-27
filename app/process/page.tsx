@@ -6,7 +6,7 @@ async function Process() {
   const projectInfo: ProjectInfo = await getProjectInfo();
 
   return (
-    <div className="container mx-auto pt-8">
+    <div className="container mx-auto p-8 lg:p-2">
       <h1 className="text-4xl font-bold text-center text-hdotTeal pb-8">
         {projectInfo.pageTitle}
       </h1>

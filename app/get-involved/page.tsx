@@ -11,11 +11,11 @@ async function getInvolved() {
         {getInvolvedPage.pageTitle}
       </h1>
 
-      <div className="max-w-3xl mx-auto container">
+      <div className="max-w-3xl mx-auto container px-4 md:px-0">
         <div className="text-2xl text-hdotTeal font-bold uppercase tracking-wide">
           {getInvolvedPage.upcomingEventsTitle || "Upcoming Events"}
         </div>
-        <hr className="border-t-2 border-hdotTeal w-1/2" />
+        <hr className="border-t-2 border-hdotTeal md:w-1/2" />
         {getInvolvedPage.upcomingEventsList.map((upcomingEvent) => {
           return (
             <section className="py-6" key={upcomingEvent._key}>
@@ -65,7 +65,7 @@ async function getInvolved() {
           <div className="text-2xl text-hdotTeal font-bold uppercase tracking-wide">
             {getInvolvedPage.pastEventsTitle || "Past Events"}
           </div>
-          <hr className="border-t-2 border-hdotTeal w-1/2" />
+          <hr className="border-t-2 border-hdotTeal md:w-1/2" />
 
           {getInvolvedPage.pastEventsList.map((pastEvent) => {
             return (
