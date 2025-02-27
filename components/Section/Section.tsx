@@ -28,11 +28,13 @@ const Section = ({
         <Image
           src={imageSrc}
           alt={altText}
-          width={1000} // Adjust width as needed
-          height={400} // Adjust height as needed
-          className=""
+          width={1000}
+          height={400}
+          className="w-full"
         />
-        <div className="text-hdotHoverTeal text-lg">{children}</div>
+        <div className="text-hdotHoverTeal text-lg md:text-left">
+          {children}
+        </div>
       </div>
     );
   } else {
