@@ -86,6 +86,7 @@ export async function getHomePage(): Promise<HomePage> {
           altText,
           imageIsOnRight,
           isTimeline,
+          isIcon,
           buttonText,
           buttonLink
         }

@@ -5,6 +5,7 @@ interface SectionProps {
   title: string;
   imageIsOnRight: boolean;
   isTimeline?: boolean;
+  isIcon?: boolean;
   children?: ReactNode;
   imageSrc: string;
   altText: string;
@@ -15,6 +16,7 @@ const Section = ({
   children,
   imageIsOnRight,
   isTimeline,
+  isIcon,
   imageSrc,
   altText,
 }: SectionProps) => {
@@ -38,7 +40,7 @@ const Section = ({
     );
   } else {
     return (
-      <section className={`my-8 p-8 `}>
+      <section className="my-8 p-8">
         <div
           className={`flex flex-col md:flex-row items-center ${
             imageIsOnRight ? "md:flex-row" : "md:flex-row-reverse"
@@ -54,13 +56,12 @@ const Section = ({
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 p-4 flex justify-center ">
+          <div className="w-full md:w-1/2 p-4 flex justify-center">
             <Image
               src={imageSrc}
               alt={altText}
-              width={400} // Adjust width as needed
-              height={600}
-              objectFit="cover" // Adjust height as needed
+              width={isIcon ? 250 : 500} // Smaller if isIcon is true
+              height={isIcon ? 250 : 400}
               className=""
             />
           </div>

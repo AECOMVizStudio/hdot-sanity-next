@@ -33,6 +33,7 @@ export type HomePageSection = {
   altText: string;
   imageIsOnRight: boolean;
   isTimeline?: boolean;
+  isIcon?: boolean;
   buttonText?: string;
   buttonLink?: string;
 };
