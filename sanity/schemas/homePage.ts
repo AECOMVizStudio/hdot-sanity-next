@@ -1,3 +1,4 @@
+import { defineField } from "sanity";
 const homePage = {
   name: "homePage",
   title: "Home Page",
@@ -97,6 +98,14 @@ const homePage = {
               description:
                 "If checked, the image will appear on the right side.",
             },
+            {
+              name: "isIcon",
+              title: "Is this an icon?",
+              type: "boolean",
+              description:
+                "If checked, the sizing of the image will be adjusted to fit the icon size.",
+            },
+
             {
               name: "isTimeline",
               title: "Is this a timeline?",
