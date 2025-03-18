@@ -15,10 +15,10 @@ function ProjectInfoCard(props: Card) {
         <Image
           src={props.image.asset.url}
           alt={props.alt}
-          width={200}
-          height={200}
+          width={150}
+          height={150}
           objectFit="cover"
-          className="w-90 h-auto rounded-lg shadow-sm"
+          className="w-90 h-auto"
         />
       </div>
       <div className="p-2">
