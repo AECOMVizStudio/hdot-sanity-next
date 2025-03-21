@@ -28,7 +28,7 @@ const Section = ({
           <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
           <div className="text-hdotHoverTeal text-lg">{children}</div>
         </div>
-        <div className="g md:text-left "></div>
+        <div className="md:text-left "></div>
         <Image
           src={imageSrc}
           alt={altText}
@@ -42,12 +42,12 @@ const Section = ({
     return (
       <section className="my-8 p-8">
         <div
-          className={`flex flex-col md:flex-row items-center ${
+          className={`flex flex-col md:flex-row items-center justify-center ${
             imageIsOnRight ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
           {/* Content Section */}
-          <div className="w-full md:w-1/2 text-center md:text-left p-4">
+          <div className="w-full md:w-1/3 text-center md:text-left p-4">
             <h2 className="text-3xl font-semibold text-hdotTeal mb-4">
               {title}
             </h2>
@@ -56,11 +56,11 @@ const Section = ({
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 p-4 flex justify-center">
+          <div className="w-full md:w-2/3 p-4 flex">
             <Image
               src={imageSrc}
               alt={altText}
-              width={isIcon ? 250 : 500} // Smaller if isIcon is true
+              width={isIcon ? 250 : 700} // Smaller if isIcon is true
               height={isIcon ? 250 : 400}
               className=""
             />
