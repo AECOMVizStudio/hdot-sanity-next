@@ -7,7 +7,7 @@ const Footer = () => {
     await console.log(email);
   }
   return (
-    <footer className="bg-hdotHoverTeal text-white pt-12 pb-4 text-center">
+    <footer className="bg-hdotHoverTeal text-white pt-12 pb-4 px-4 text-center">
       <div className="flex flex-col mx-auto max-w-7xl text-left">
         <p className="text-4xl font-bold">Sign up for our email list!</p>
         <p className="text-xl">
