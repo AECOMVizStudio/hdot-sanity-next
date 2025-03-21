@@ -1,6 +1,13 @@
 import React from "react";
+import Image from "next/image";
 
 const Footer = () => {
+
+  function getCurrentYear() {
+    return new Date().getFullYear() ;
+  }
+
+
   async function emailSignup(formData: FormData) {
     "use server";
     const email = formData.get("email");
@@ -30,8 +37,21 @@ const Footer = () => {
             Submit
           </button>
         </form>
-        <p className="py-8">Copyright © 2025 AECOM</p>
+        
+        <div className="flex space-x-8">
+          <p className="py-8">Copyright © {getCurrentYear()} AECOM</p>
+          <Image
+            src={'/hdot_logo.svg'}
+            width={100}
+            height={100}
+            alt="Hawaii Department of Transportation Logo"
+            className=""
+            priority={false}
+            />
+        </div>
+
       </div>
+
     </footer>
   );
 };
