@@ -43,11 +43,11 @@ const Section = ({
       <section className="my-8 p-8">
         <div
           className={`flex flex-col md:flex-row items-center justify-center ${
-            imageIsOnRight ? "md:flex-row" : "md:flex-row-reverse"
+            imageIsOnRight ? "flex-col items-center md:flex-row" : "flex-col items-center md:flex-row-reverse"
           }`}
         >
           {/* Content Section */}
-          <div className="w-full md:w-1/3 text-center md:text-left p-4">
+          <div className="w-full md:w-1/2 lg:w-1/3 text-center md:text-left p-4">
             <h2 className="text-3xl font-semibold text-hdotTeal mb-4">
               {title}
             </h2>
@@ -56,7 +56,7 @@ const Section = ({
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-2/3 p-4 flex">
+          <div className="w-full md:w-1/2 lg:w-2/3 p-4 items-center justify-center flex">
             <Image
               src={imageSrc}
               alt={altText}

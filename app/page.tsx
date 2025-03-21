@@ -40,7 +40,7 @@ export default async function Home() {
       </div>
 
       <div className="container mx-auto">
-        {homePage.sections.map((section, index) => (
+        {homePage.sections?.map((section, index) => (
           <Section
             key={index}
             title={section.title}
