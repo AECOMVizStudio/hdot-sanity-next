@@ -1,6 +1,7 @@
 export interface Card {
   _key: string;
   title: string;
+  subtitle: string;
   image: {
     asset: {
       _id: string;

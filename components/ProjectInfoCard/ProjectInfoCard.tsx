@@ -8,24 +8,28 @@ function ProjectInfoCard(props: Card) {
       className="mb-8 bg-hdotBgAqua rounded-lg py-6 shadow-md max-h-fit"
       key={props._key}
     >
-      <h2 className="text-2xl font-bold mb-4 ml-2 text-hdotTeal text-left min-h-20">
-        {props.title}
-      </h2>
-      <div className="w-full h-[250px] flex items-center justify-center mb-4 relative">
+      <div className="w-full flex-col items-center mb-4 justify-center text-2xl font-bold text-hdotTeal text-center h-[120px] ">
+        <h1 className="">
+          {props.title}
+        </h1>
+        <h2 className="">
+          {props.subtitle}
+        </h2>
+      </div>
+      <div className="w-full h-[150px] flex items-center mb-4 justify-center relative">
         <Image
           src={props.image.asset.url}
           alt={props.alt}
           width={150}
           height={150}
-          objectFit="cover"
-          className="w-90 h-auto"
+          className="h-[150px] w-auto"
         />
       </div>
       <div className="p-2">
         <h3 className="text-xl font-bold text-orange-500">
           {props.subheading}
         </h3>
-        <hr className="border-t-2 border-hdotTeal w-full md:w-1/2" />
+        <hr className="border-t-2 border-hdotTeal w-full" />
       </div>
       <ul className="list-disc list-inside mb-4 px-2 space-y-2">
         {props.bulletPoints.map((bulletPoint, index) => {

@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased bg-white flex flex-col min-h-screen">
         <Navbar />
-        <main className="rounded-lg flex-1 px-2 sm:px-0">{children}</main>
+        <main className="rounded-lg flex-1">{children}</main>
         <Footer />
       </body>
     </html>

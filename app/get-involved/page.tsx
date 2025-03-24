@@ -1,8 +1,9 @@
 import { PortableText } from "@portabletext/react";
 import { getGetInvolvedPage } from "@/sanity/sanity-utils";
 import { GetInvolvedPage } from "@/types/GetInvolved";
+import { FileText } from "lucide-react"
 
-import Survey from "@/components/Survey/Survey";
+
 
 async function getInvolved() {
   const getInvolvedPage: GetInvolvedPage = await getGetInvolvedPage();
@@ -40,7 +41,7 @@ async function getInvolved() {
                   {upcomingEvent.documentsSectionTitle}
                 </h3>
 
-                <div className="mt-3 flex items-center space-x-3">
+                <div className="mt-3 flex items-center flex-row space-x-3">
                   {upcomingEvent.documentsList?.map((document) => {
                     return (
                       <div key={document.fileUrl}>
@@ -49,9 +50,9 @@ async function getInvolved() {
                         </p>
                         <a
                           href={document.fileUrl}
-                          className="text-gray-800 hover:hover:text-hdotJade font-medium"
+                          className="text-gray-800 hover:hover:text-hdotJade font-medium align-baseline"
                         >
-                          PDF icon - link
+                          <FileText size={44}/>
                         </a>
                       </div>
                     );
@@ -85,29 +86,29 @@ async function getInvolved() {
                     {pastEvent.documentsSectionTitle}
                   </h3>
 
-                  <div className="mt-3 flex items-center space-x-3">
-                    {pastEvent.documentsList?.map((document) => {
-                      return (
-                        <div key={document.fileUrl}>
-                          <p className="text-gray-500 uppercase text-xs font-semibold">
-                            {document.title}
-                          </p>
-                          <a
-                            href={document.fileUrl}
-                            className="text-gray-800 hover:hover:text-hdotJade font-medium"
-                          >
-                            PDF icon - link
-                          </a>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  <div className="mt-3 flex items-center flex-row space-x-3">
+                  {pastEvent.documentsList?.map((document) => {
+                    return (
+                      <div key={document.fileUrl}>
+                        <p className="text-gray-500 uppercase text-xs font-semibold">
+                          {document.title}
+                        </p>
+                        <a
+                          href={document.fileUrl}
+                          className="text-gray-800 hover:hover:text-hdotJade font-medium align-baseline"
+                        >
+                          <FileText size={44}/>
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
                 </div>
               </section>
             );
           })}
         </div>
-        <Survey />
+        
       </div>
     </>
   );

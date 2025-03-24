@@ -155,6 +155,7 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
         _key,
         id,
         title,
+        subtitle,
         image{
           asset->{
             url

@@ -30,6 +30,14 @@ const projectInfo = {
               type: "string",
               validation: (Rule) => Rule.required(),
             }),
+          
+            defineField({
+              name: "subtitle",
+              title: "Subtitle",
+              type: "string",
+              description: "2nd line of the title for the card",
+              validation: (Rule) => Rule.required(),
+            }),
             defineField({
               name: "image",
               title: "Image",
