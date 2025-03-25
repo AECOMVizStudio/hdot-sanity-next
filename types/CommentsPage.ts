@@ -28,7 +28,7 @@ export type CommentsPage = {
       _id: string;
       url: string;
     };
-    alt?: string; // Optional in case it's missing
+    alt: string; // Optional in case it's missing
   };
   formFields: {
     name: string;

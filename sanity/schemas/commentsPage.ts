@@ -27,6 +27,14 @@ export default {
       },
     },
     {
+      name: "alt",
+      title: "Alt Text",
+      type: "string",
+      description: "Describe the image for accessibility.",
+      validation: (Rule: any) =>
+        Rule.required().error("Alt text is required"),
+    },
+    {
       name: "formFields",
       title: "Form Fields",
       type: "object",
