@@ -31,7 +31,7 @@ async function SubmitComments() {
           <div className="flex justify-center items-center">
             <Image
               src={commentsPage.mainImage.asset.url}
-              alt={commentsPage.mainImage.alt || "Default alt text"}
+              alt={commentsPage.mainImage.alt|| "Default alt text"}
               priority
               width={400}
               height={200}
