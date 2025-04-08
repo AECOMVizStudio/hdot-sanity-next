@@ -1,4 +1,4 @@
-import { PortableTextBlock } from "next-sanity";
+import { PortableTextBlock } from 'next-sanity';
 export interface DocumentItem {
   title: string;
   fileUrl: string;
@@ -12,7 +12,7 @@ export interface Event {
   dateTime: string;
   link?: string;
   documentsSectionTitle?: string;
-  documentsList?: DocumentItem[]; // ✅ Just an array of `DocumentItem`
+  documentsList?: DocumentItem[];
 }
 
 export interface GetInvolvedPage {

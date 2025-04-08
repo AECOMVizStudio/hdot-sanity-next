@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Aptos";
-  src: url("/fonts/Aptos.ttf") format("woff");
+  font-family: 'Aptos';
+  src: url('/fonts/Aptos.ttf') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Aptos";
-  src: url("/fonts/Aptos-Bold.ttf") format("woff");
+  font-family: 'Aptos';
+  src: url('/fonts/Aptos-Bold.ttf') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
 body {
-  font-family: "Aptos", sans-serif;
+  font-family: 'Aptos', sans-serif;
   overflow-x: hidden;
 }
 
