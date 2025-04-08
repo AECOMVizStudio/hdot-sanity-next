@@ -2,6 +2,7 @@ import { PortableText } from "@portabletext/react";
 import { getGetInvolvedPage } from "@/sanity/sanity-utils";
 import { GetInvolvedPage } from "@/types/GetInvolved";
 import { FileText } from "lucide-react"
+import { get } from "http";
 
 
 
@@ -19,7 +20,7 @@ async function getInvolved() {
           {getInvolvedPage.upcomingEventsTitle || "Upcoming Events"}
         </div>
         <hr className="border-t-2 border-hdotTeal md:w-1/2" />
-        {getInvolvedPage.upcomingEventsList.map((upcomingEvent) => {
+        {getInvolvedPage.upcomingEventsList?.map((upcomingEvent) => {
           return (
             <section className="py-6" key={upcomingEvent._key}>
               <div className="bg-gray-100 shadow-lg p-6">
@@ -65,12 +66,17 @@ async function getInvolved() {
 
         {/* Past Events */}
         <div>
+        {getInvolvedPage.pastEventsList && 
+        <>
           <div className="text-2xl text-hdotTeal font-bold uppercase tracking-wide">
             {getInvolvedPage.pastEventsTitle || "Past Events"}
           </div>
           <hr className="border-t-2 border-hdotTeal md:w-1/2" />
+          </>
+        }
+       
 
-          {getInvolvedPage.pastEventsList.map((pastEvent) => {
+          {getInvolvedPage.pastEventsList?.map((pastEvent) => {
             return (
               <section className="py-6" key={pastEvent._key}>
                 <div className="bg-gray-100 shadow-lg p-6">
