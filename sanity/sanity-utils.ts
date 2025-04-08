@@ -1,10 +1,10 @@
-import { createClient, groq } from "next-sanity";
-import { HomePage } from "@/types/HomePage";
-import { CommentsPage } from "@/types/CommentsPage";
-import { DocumentsPage } from "@/types/DocumentsPage";
-import { ProjectInfo } from "@/types/ProjectInfoPage";
-import { GetInvolvedPage } from "@/types/GetInvolved";
-import { FAQ } from "@/types/FAQPage";
+import { createClient, groq } from 'next-sanity';
+import { HomePage } from '@/types/HomePage';
+import { CommentsPage } from '@/types/CommentsPage';
+import { DocumentsPage } from '@/types/DocumentsPage';
+import { ProjectInfo } from '@/types/ProjectInfoPage';
+import { GetInvolvedPage } from '@/types/GetInvolved';
+import { FAQ } from '@/types/FAQPage';
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -55,8 +55,8 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
 
     return getInvolvedPage;
   } catch (error) {
-    console.error("Failed to fetch getInvolvedPage:", error);
-    throw new Error("Failed to fetch getInvolvedPage");
+    console.error('Failed to fetch getInvolvedPage:', error);
+    throw new Error('Failed to fetch getInvolvedPage');
   }
 }
 
@@ -95,8 +95,8 @@ export async function getHomePage(): Promise<HomePage> {
 
     return homePage;
   } catch (error) {
-    console.error("Failed to fetch homePage:", error);
-    throw new Error("Failed to fetch homePage");
+    console.error('Failed to fetch homePage:', error);
+    throw new Error('Failed to fetch homePage');
   }
 }
 

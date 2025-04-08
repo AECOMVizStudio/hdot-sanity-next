@@ -1,6 +1,6 @@
 export type Comment = {
   _id: string;
-  _type: "comment";
+  _type: 'comment';
   _createdAt: string;
   name: string;
   email: string;

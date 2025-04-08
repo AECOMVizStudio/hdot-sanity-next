@@ -1,4 +1,4 @@
-import { PortableTextBlock } from "next-sanity";
+import { PortableTextBlock } from 'next-sanity';
 
 export type HomePage = {
   _id: string;

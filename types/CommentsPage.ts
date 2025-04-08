@@ -17,7 +17,7 @@
 
 export type CommentsPage = {
   _id: string;
-  _type: "commentsPage";
+  _type: 'commentsPage';
   _createdAt: string;
 
   title: string;

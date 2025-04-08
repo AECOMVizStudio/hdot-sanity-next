@@ -1,85 +1,85 @@
-import { defineField } from "sanity";
+import { defineField } from 'sanity';
 
 // process page - formerly project info
 
 const projectInfo = {
-  name: "projectInfo",
-  title: "Process Page - Formerly Project Info",
-  type: "document",
+  name: 'projectInfo',
+  title: 'Process Page - Formerly Project Info',
+  type: 'document',
   fields: [
     {
-      name: "pageTitle",
-      title: "Page Title",
-      type: "string",
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
       validation: (Rule: any) =>
-        Rule.required().error("Page title is required"),
+        Rule.required().error('Page title is required'),
     },
     {
-      name: "cards",
-      title: "Info Cards",
-      type: "array",
+      name: 'cards',
+      title: 'Info Cards',
+      type: 'array',
       of: [
         {
-          type: "object",
-          name: "card",
-          title: "Info Card",
+          type: 'object',
+          name: 'card',
+          title: 'Info Card',
           fields: [
             defineField({
-              name: "title",
-              title: "Title",
-              type: "string",
+              name: 'title',
+              title: 'Title',
+              type: 'string',
               validation: (Rule) => Rule.required(),
             }),
-          
+
             defineField({
-              name: "subtitle",
-              title: "Subtitle",
-              type: "string",
-              description: "2nd line of the title for the card",
+              name: 'subtitle',
+              title: 'Subtitle',
+              type: 'string',
+              description: '2nd line of the title for the card',
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: "image",
-              title: "Image",
-              type: "image",
+              name: 'image',
+              title: 'Image',
+              type: 'image',
               options: { hotspot: true },
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: "alt",
-              title: "Alt text",
-              type: "string",
+              name: 'alt',
+              title: 'Alt text',
+              type: 'string',
 
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: "subheading",
-              title: "Subheading",
-              type: "string",
+              name: 'subheading',
+              title: 'Subheading',
+              type: 'string',
 
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: "bulletPoints",
-              title: "Bullet Points",
-              type: "array",
-              of: [{ type: "string" }],
+              name: 'bulletPoints',
+              title: 'Bullet Points',
+              type: 'array',
+              of: [{ type: 'string' }],
               validation: (Rule) => Rule.max(3),
             }),
 
             defineField({
-              name: "buttonText",
-              title: "Button Text",
-              type: "string",
+              name: 'buttonText',
+              title: 'Button Text',
+              type: 'string',
               description:
-                "Text for the button - if left blank, no button will be displayed",
+                'Text for the button - if left blank, no button will be displayed',
             }),
             defineField({
-              name: "buttonLink",
-              title: "Button Link",
-              type: "url",
+              name: 'buttonLink',
+              title: 'Button Link',
+              type: 'url',
               description:
-                "Link for the button - for internal links, use the relative path. ex: /process",
+                'Link for the button - for internal links, use the relative path. ex: /process',
               validation: (Rule) => Rule.uri({ allowRelative: true }),
             }),
           ],
