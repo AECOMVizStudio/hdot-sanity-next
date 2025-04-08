@@ -12,7 +12,7 @@ export interface Event {
   dateTime: string;
   link?: string;
   documentsSectionTitle?: string;
-  documentsList?: DocumentItem[]; // ✅ Just an array of `DocumentItem`
+  documentsList?: DocumentItem[];
 }
 
 export interface GetInvolvedPage {

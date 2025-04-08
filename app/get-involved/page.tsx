@@ -2,7 +2,6 @@ import { PortableText } from "@portabletext/react";
 import { getGetInvolvedPage } from "@/sanity/sanity-utils";
 import { GetInvolvedPage } from "@/types/GetInvolved";
 import { FileText } from "lucide-react"
-import { get } from "http";
 
 
 
