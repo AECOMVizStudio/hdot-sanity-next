@@ -1,10 +1,10 @@
-import Link from "next/link";
+
 import Image from "next/image";
 import { getHomePage } from "@/sanity/sanity-utils";
-import { PortableText } from "next-sanity";
+
 
 import Section from "@/components/Section/Section";
-import Button from "@/components/Button/Button";
+
 
 import { HomePage } from "@/types/HomePage";
 
