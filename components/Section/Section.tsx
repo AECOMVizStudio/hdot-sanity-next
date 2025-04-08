@@ -32,7 +32,7 @@ const Section = ({
         <Image
           src={imageSrc}
           alt={altText}
-          width={1000}
+          width={1500}
           height={400}
           className="w-full"
         />
