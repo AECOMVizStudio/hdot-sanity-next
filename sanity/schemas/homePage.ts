@@ -1,4 +1,4 @@
-import { defineField } from "sanity";
+
 const homePage = {
   name: "homePage",
   title: "Home Page",

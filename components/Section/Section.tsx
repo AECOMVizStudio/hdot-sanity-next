@@ -1,24 +1,33 @@
-import React, { ReactNode } from "react";
+import { PortableText } from "@portabletext/react";
 import Image from "next/image";
+import Link from "next/link";
+import { PortableTextBlock } from "next-sanity";
+
+// components
+import Button from "@/components/Button/Button";
 
 interface SectionProps {
   title: string;
   imageIsOnRight: boolean;
   isTimeline?: boolean;
   isIcon?: boolean;
-  children?: ReactNode;
+  content: PortableTextBlock[];
   imageSrc: string;
   altText: string;
+  buttonText?: string;
+  buttonLink?: string;
 }
 
 const Section = ({
   title,
-  children,
+  content,
   imageIsOnRight,
   isTimeline,
   isIcon,
   imageSrc,
   altText,
+  buttonText,
+  buttonLink 
 }: SectionProps) => {
   if (isTimeline === true) {
     return (
@@ -26,7 +35,7 @@ const Section = ({
         <div className="w-full md:w-1/2 text-center md:text-left p-4">
           <h2 className="text-3xl font-semibold text-hdotTeal mb-4">{title}</h2>
           <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
-          <div className="text-hdotHoverTeal text-lg">{children}</div>
+          {/* <div className="text-hdotHoverTeal text-lg">{children}</div> */}
         </div>
         <div className="md:text-left "></div>
         <Image
@@ -52,7 +61,20 @@ const Section = ({
               {title}
             </h2>
             <hr className="border-t-2 border-hdotTeal my-4 w-full md:w-1/2" />
-            <div className="text-hdotHoverTeal text-lg">{children}</div>
+            <div className="flex flex-col space-y-4">
+
+            <div className="text-hdotHoverTeal text-lg">
+              <PortableText value = {content} />
+
+            </div>
+            {buttonText && buttonLink && (
+              
+              <Link href={buttonLink} className="">
+                  <Button>{buttonText}</Button>
+                </Link>
+                
+              )}
+              </div>
           </div>
 
           {/* Image Section */}

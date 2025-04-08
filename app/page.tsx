@@ -41,23 +41,24 @@ export default async function Home() {
 
       <div className="container mx-auto">
         {homePage.sections?.map((section, index) => (
+          
           <Section
             key={index}
             title={section.title}
+            content={section.content}
             imageIsOnRight={section.imageIsOnRight}
             isTimeline={section.isTimeline}
             isIcon={section.isIcon}
             imageSrc={section.image.asset.url}
             altText={section.altText}
-          >
-            <PortableText value={section.content} />
-            {section.buttonText && section.buttonLink && (
-              <Link href={section.buttonLink} className="inline-block mt-4">
-                <Button>{section.buttonText}</Button>
-              </Link>
-            )}
-          </Section>
+            buttonText={section.buttonText}
+            buttonLink={section.buttonLink} 
+            
+            />
+            
+            
         ))}
+        
       </div>
     </>
   );
