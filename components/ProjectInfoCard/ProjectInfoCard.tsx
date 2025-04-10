@@ -21,11 +21,14 @@ function ProjectInfoCard(props: Card) {
           className='h-[150px] w-auto'
         />
       </div>
-      <div className='p-2'>
-        <h3 className='text-xl font-bold text-orange-500'>
-          {props.subheading}
-        </h3>
-        <hr className='border-t-2 border-hdotTeal w-full' />
+      <div className='p-2 flex flex-col '>
+        <div className='md:min-h-14'>
+          <h3 className='text-xl font-bold text-orange-500'>
+            {props.subheading}
+          </h3>
+        </div>
+
+        <hr className='border-t-2 border-hdotTeal w-full mt-2' />
       </div>
       <ul className='list-disc list-inside mb-4 px-2 space-y-2'>
         {props.bulletPoints.map((bulletPoint, index) => {
