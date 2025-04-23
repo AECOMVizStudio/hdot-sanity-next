@@ -1,0 +1,17 @@
+[build]
+command = "next build"
+publish = ".next"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/old-url"
+  to = "/new-url"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
