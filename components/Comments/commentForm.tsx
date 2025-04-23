@@ -2,119 +2,121 @@
 
 import { useState } from 'react';
 
-const CommentForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    subscriber: false,
-  });
+type FormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  subscriber: boolean;
+};
+
+const initialFormData: FormData = {
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+  subscriber: false,
+};
+
+export default function CommentForm() {
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const commentsPage = {
-    formFields: {
-      name: 'Name',
-      email: 'Email',
-      subject: 'Subject',
-      message: 'Message',
-      subscriber: 'Subscribe to newsletter',
-    },
-  };
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
-  // Handle form input
   const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value, type } = e.target as HTMLInputElement;
-    const checked = (e.target as HTMLInputElement).checked;
+    const { name, value, type } = e.target;
 
-    // Check if the element is a checkbox
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value, // If it's a checkbox, use `checked`, otherwise `value`
+    const newValue =
+      type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatusMessage(null);
 
-    // Make your API request here, sending formData
     try {
-      const response = await fetch('/api/comments', {
+      const res = await fetch('/.netlify/functions/submitForm', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      console.log('Response', response);
 
-      // Reset form data after submission
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        subscriber: false,
-      });
-      alert('Thank you for your submission!');
-    } catch {
-      alert('There was an error submitting your form.');
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err?.error || 'Submission failed');
+      }
+      console.log(res);
+
+      setStatusMessage('Thanks! Your message has been submitted.');
+      setFormData(initialFormData);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setStatusMessage(err.message);
+      } else {
+        setStatusMessage('Something went wrong.');
+      }
     } finally {
       setIsSubmitting(false);
     }
-    console.log('Form submitted', formData);
   };
+
   return (
     <form onSubmit={handleSubmit} className='space-y-4'>
       <div>
         <label htmlFor='name' className='block'>
-          {(commentsPage.formFields.name || 'Name') + ' *'}
+          Name *
         </label>
         <input
-          type='text'
           id='name'
           name='name'
+          type='text'
+          required
           value={formData.name}
           onChange={handleChange}
           className='w-full p-2 border border-hdotAqua'
-          required
         />
       </div>
+
       <div>
         <label htmlFor='email' className='block'>
-          {(commentsPage.formFields.email || 'Email') + ' *'}
+          Email *
         </label>
         <input
-          type='email'
           id='email'
           name='email'
+          type='email'
+          required
           value={formData.email}
           onChange={handleChange}
           className='w-full p-2 border border-hdotAqua'
-          required
         />
       </div>
+
       <div>
         <label htmlFor='subject' className='block'>
-          {commentsPage.formFields.subject || 'Subject'}
+          Subject
         </label>
         <input
-          type='text'
           id='subject'
           name='subject'
+          type='text'
           value={formData.subject}
           onChange={handleChange}
           className='w-full p-2 border border-hdotAqua'
         />
       </div>
+
       <div>
         <label htmlFor='message' className='block'>
-          {commentsPage.formFields.message || 'Message'}
+          Message
         </label>
         <textarea
           id='message'
@@ -124,11 +126,12 @@ const CommentForm = () => {
           className='w-full p-2 border border-hdotAqua'
         />
       </div>
+
       <div className='flex flex-row'>
         <input
-          type='checkbox'
           id='subscriber'
           name='subscriber'
+          type='checkbox'
           checked={formData.subscriber}
           onChange={handleChange}
           className='w-4 h-4 border border-hdotAqua'
@@ -137,11 +140,14 @@ const CommentForm = () => {
           Keep me informed! I want to subscribe to the project email list.
         </label>
       </div>
+
       <button type='submit' className='btn' disabled={isSubmitting}>
-        {isSubmitting ? 'Submitting...' : 'Submit'}
+        {isSubmitting ? 'Submitting…' : 'Submit'}
       </button>
+
+      {statusMessage && (
+        <p className='text-hdotAqua font-medium'>{statusMessage}</p>
+      )}
     </form>
   );
-};
-
-export default CommentForm;
+}

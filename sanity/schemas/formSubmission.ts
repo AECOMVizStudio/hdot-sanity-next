@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
-export const commentSchema = defineType({
-  name: 'comments',
+export const formSubmission = defineType({
+  name: 'formSubmission',
   title: 'User Submitted Comments',
   type: 'document',
   fields: [
@@ -18,14 +18,14 @@ export const commentSchema = defineType({
       validation: (Rule) => Rule.required().email(),
     }),
     defineField({
-      name: 'message',
-      title: 'Message',
+      name: 'subject',
+      title: 'Subject',
       type: 'text',
     }),
     defineField({
-      name: 'subject',
-      title: 'Subject',
-      type: 'string',
+      name: 'message',
+      title: 'Message',
+      type: 'text',
     }),
     defineField({
       name: 'subscriber',
@@ -33,8 +33,8 @@ export const commentSchema = defineType({
       type: 'boolean',
     }),
     defineField({
-      name: 'createdAt',
-      title: 'Created At',
+      name: 'submittedAt',
+      title: 'Submitted At',
       type: 'datetime',
       options: {
         dateFormat: 'YYYY-MM-DD',
