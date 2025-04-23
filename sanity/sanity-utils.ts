@@ -1,4 +1,5 @@
-import { createClient, groq } from 'next-sanity';
+import { groq } from 'next-sanity';
+import { publicClient } from '@/lib/sanity-public';
 import { HomePage } from '@/types/HomePage';
 import { CommentsPage } from '@/types/CommentsPage';
 import { DocumentsPage } from '@/types/DocumentsPage';
@@ -6,17 +7,9 @@ import { ProjectInfo } from '@/types/ProjectInfoPage';
 import { GetInvolvedPage } from '@/types/GetInvolved';
 import { FAQ } from '@/types/FAQPage';
 
-export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-  token: process.env.SANITY_API_TOKEN,
-  useCdn: false,
-});
-
 export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
   try {
-    const getInvolvedPage = await client.fetch(
+    const getInvolvedPage = await publicClient.fetch(
       groq`*[_type == "getInvolved"][0]{
       
         pageTitle,
@@ -62,7 +55,7 @@ export async function getGetInvolvedPage(): Promise<GetInvolvedPage> {
 
 export async function getHomePage(): Promise<HomePage> {
   try {
-    const homePage = await client.fetch(
+    const homePage = await publicClient.fetch(
       groq`*[_type == "homePage"][0]{
         title,
         titleLine2,
@@ -101,7 +94,7 @@ export async function getHomePage(): Promise<HomePage> {
 }
 
 export function getCommentsPage(): Promise<CommentsPage> {
-  return client.fetch(
+  return publicClient.fetch(
     groq`
       *[_type == "commentsPage"][0] {
         title,
@@ -142,12 +135,12 @@ export async function getDocumentsPage(): Promise<DocumentsPage> {
     }
   `;
 
-  const documentsPage = await client.fetch(query);
+  const documentsPage = await publicClient.fetch(query);
   return documentsPage;
 }
 
 export async function getProjectInfo(): Promise<ProjectInfo> {
-  return await client.fetch(
+  return await publicClient.fetch(
     groq`*[_type == "projectInfo"][0]{
       _id,
       pageTitle,
@@ -172,7 +165,7 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
 }
 
 export async function getFAQ(): Promise<FAQ> {
-  return await client.fetch(
+  return await publicClient.fetch(
     groq`*[_type == "faq"][0]{
       title,
       questions[]{

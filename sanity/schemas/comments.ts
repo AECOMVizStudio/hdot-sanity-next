@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
 export const commentSchema = defineType({
-  name: 'comments', // This is the type name (use this in your API)
+  name: 'comments',
   title: 'User Submitted Comments',
   type: 'document',
   fields: [
