@@ -14,26 +14,24 @@ export const handler: Handler = async (event) => {
       event.body || '{}'
     );
 
-    // Basic validation
-    if (!name || !email || !message) {
+    if (!name || !email) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing required fields.' }),
+        body: JSON.stringify({ error: 'Name and email are required.' }),
       };
     }
 
-    // Sanity document structure
-    const submission = {
+    const doc = {
       _type: 'formSubmission',
       name,
       email,
-      subject,
-      message,
-      subscriber,
+      subject: subject || '',
+      message: message || '',
+      subscriber: !!subscriber,
       submittedAt: new Date().toISOString(),
     };
 
-    await serverClient.create(submission);
+    await serverClient.create(doc);
 
     return {
       statusCode: 200,

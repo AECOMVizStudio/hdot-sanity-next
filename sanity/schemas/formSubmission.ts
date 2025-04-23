@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
 export const formSubmission = defineType({
-  name: 'comments',
+  name: 'formSubmission',
   title: 'User Submitted Comments',
   type: 'document',
   fields: [
