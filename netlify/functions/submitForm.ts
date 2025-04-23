@@ -10,7 +10,9 @@ export const handler: Handler = async (event) => {
   }
 
   try {
-    const { name, email, message } = JSON.parse(event.body || '{}');
+    const { name, email, subject, message, subscriber } = JSON.parse(
+      event.body || '{}'
+    );
 
     // Basic validation
     if (!name || !email || !message) {
@@ -25,7 +27,9 @@ export const handler: Handler = async (event) => {
       _type: 'formSubmission',
       name,
       email,
+      subject,
       message,
+      subscriber,
       submittedAt: new Date().toISOString(),
     };
 
