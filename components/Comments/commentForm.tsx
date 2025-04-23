@@ -57,8 +57,12 @@ export default function CommentForm() {
 
       setStatusMessage('Thanks! Your message has been submitted.');
       setFormData(initialFormData);
-    } catch (err: any) {
-      setStatusMessage(err.message || 'Something went wrong.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setStatusMessage(err.message);
+      } else {
+        setStatusMessage('Something went wrong.');
+      }
     } finally {
       setIsSubmitting(false);
     }
